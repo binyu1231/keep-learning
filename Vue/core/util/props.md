@@ -59,3 +59,12 @@ assertType(1234, String) // => { valid: false, expectedType: 'string' }
 assertType(1234, Number) // => { valid: true, expectedType: 'number' }
 assertType(1234, Array)  // => { valid: true, expectedType: 'Array' }
 ```
+
+- [hasOwn](../../shared/util.md#fn-hasown)
+- [isObject](../../shared/util.md#fn-isobject)
+- [isPlainObject](../../shared/util.md#fn-isplainobject)
+- [capitalize](../../shared/util.md#fn-capitalize)
+- [hyphenate](../../shared/util.md#fn-hyphenate)
+- [observe](../observer/index.md#fn-observe)
+- [observerState](../observer/index.md#object-observerstate)
+- [warn](../util/debug.md#fn-warn)

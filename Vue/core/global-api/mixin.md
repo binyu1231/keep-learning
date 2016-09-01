@@ -11,3 +11,5 @@ function initMixin (Vue: GlobalAPI) {
   }
 }
 ```
+
+- [mergeOptions](../util/options.md#fn-mergeoptions)

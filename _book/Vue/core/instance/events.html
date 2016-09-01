@@ -135,7 +135,7 @@
                 <a href="../config.html">
             
                     
-                    ☆ config.js
+                    ★ config.js
             
                 </a>
             
@@ -843,11 +843,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="vuecoreinstanceeventsjs">Vue/core/instance/events.js</h1><h2 id="fn-initevents">[fn] initEvents</h2><p>&#x4E3A;&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;&#x4E8B;&#x4EF6;&#x529F;&#x80FD;&#x3002;</p><ul><li>Vue/shared/util.js [fn]bind
-</li>
-<li>updateListeners &#x672A;&#x5B8C;&#x6210;&#x7F3A;&#x94FE;&#x63A5;
-</li></ul>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initEvents</span> (<span class="hljs-params">vm: Component</span>) </span>{
+                                <h1 id="vuecoreinstanceeventsjs">Vue/core/instance/events.js</h1><h2 id="fn-initevents">[fn] initEvents</h2><p>&#x4E3A;&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;&#x4E8B;&#x4EF6;&#x529F;&#x80FD;&#x3002;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initEvents</span> (<span class="hljs-params">vm: Component</span>) </span>{
   vm._events = <span class="hljs-built_in">Object</span>.create(<span class="hljs-literal">null</span>)
   <span class="hljs-comment">// &#x521D;&#x59CB;&#x5316;&#x7236;&#x7EA7;&#x7684;&#x9644;&#x52A0;&#x4E8B;&#x4EF6;</span>
   <span class="hljs-keyword">const</span> listeners = vm.$options._parentListeners
@@ -864,6 +860,12 @@
     vm._updateListeners(listeners)
   }
 }</code></pre>
+<ul><li><a href="../../shared/util.html#fn-bind">bind</a>
+</li>
+<li><a href="../../shared/util.html#fn-toarray">toArray</a>
+</li>
+<li><a href="../vdom/helpers.html#fn-updateListeners">updateListeners</a>
+</li></ul>
 <h2 id="fn-eventsmixin">[fn] eventsMixin</h2><p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5728; Vue &#x7684;&#x539F;&#x578B;&#x94FE;&#x4E0A;&#x5B9A;&#x4E49;&#x4E86;&#x82E5;&#x5E72;&#x4E8B;&#x4EF6;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x4F7F;&#x5F97;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x88AB;&#x5B9E;&#x4F8B;&#x7EE7;&#x627F;&#x3002;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5747;&#x8FD4;&#x56DE;&#x7EC4;&#x4EF6;&#x7684;&#x5B9E;&#x4F8B;</p><h3 id="vueprototypeon">Vue.prototype.$on</h3><p>&#x5C06;&#x540C;&#x540D;&#x4E8B;&#x4EF6;&#x6DFB;&#x52A0;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x7EC4;&#x4E2D;</p><pre><code class="lang-javascript">Vue.prototype.$on = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event: string, fn: Function</span>): <span class="hljs-title">Component</span> </span>{
   <span class="hljs-keyword">const</span> vm: Component = <span class="hljs-keyword">this</span>
   ;(vm._events[event] || (vm._events[event] = [])).push(fn)
@@ -970,7 +972,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"★ events.js","level":"1.2.1.4.2","depth":4,"next":{"title":"★ lifecycle.js","level":"1.2.1.4.3","depth":4,"path":"Vue/core/instance/lifecycle.md","ref":"Vue/core/instance/lifecycle.md","articles":[]},"previous":{"title":"★ init.js","level":"1.2.1.4.1","depth":4,"path":"Vue/core/instance/init.md","ref":"Vue/core/instance/init.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/instance/events.md","mtime":"2016-09-01T06:49:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T03:42:47.456Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"★ events.js","level":"1.2.1.4.2","depth":4,"next":{"title":"★ lifecycle.js","level":"1.2.1.4.3","depth":4,"path":"Vue/core/instance/lifecycle.md","ref":"Vue/core/instance/lifecycle.md","articles":[]},"previous":{"title":"★ init.js","level":"1.2.1.4.1","depth":4,"path":"Vue/core/instance/init.md","ref":"Vue/core/instance/init.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/instance/events.md","mtime":"2016-09-01T10:13:25.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T08:24:40.613Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

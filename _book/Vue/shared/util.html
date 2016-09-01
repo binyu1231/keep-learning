@@ -133,7 +133,7 @@
                 <a href="../core/config.html">
             
                     
-                    ☆ config.js
+                    ★ config.js
             
                 </a>
             
@@ -878,7 +878,7 @@ isBuiltInTag(<span class="hljs-string">&apos;a&apos;</span>) <span class="hljs-c
     }
   }
 }</code></pre>
-<h2 id="fn-hasownproperty&#x3001;fn-hasown">[fn] hasOwnProperty&#x3001;[fn] hasOwn</h2><p>&#x67E5;&#x770B;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF08;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF09;&#x662F;&#x5426;&#x6709;&#x67D0;&#x79CD;&#x5C5E;&#x6027;&#xFF08;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF09;</p><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> hasOwnProperty = <span class="hljs-built_in">Object</span>.prototype.hasOwnProperty
+<h2 id="fn-hasown">[fn] hasOwn</h2><h2 id="fn-hasownproperty">[fn] hasOwnProperty</h2><p>&#x67E5;&#x770B;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF08;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF09;&#x662F;&#x5426;&#x6709;&#x67D0;&#x79CD;&#x5C5E;&#x6027;&#xFF08;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF09;</p><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> hasOwnProperty = <span class="hljs-built_in">Object</span>.prototype.hasOwnProperty
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasOwn</span> (<span class="hljs-params">obj: Object, key: string</span>): <span class="hljs-title">boolean</span> </span>{
   <span class="hljs-keyword">return</span> hasOwnProperty.call(obj, key)
 }</code></pre>
@@ -906,7 +906,7 @@ isBuiltInTag(<span class="hljs-string">&apos;a&apos;</span>) <span class="hljs-c
     .replace(hyphenateRE, <span class="hljs-string">&apos;$1-$2&apos;</span>)
     .toLowerCase()
 })</code></pre>
-<h2 id="&#x2606;-fn-bind">&#x2606; [fn] bind</h2><p>&#x7B80;&#x5355;&#x7684;&#x7ED1;&#x5B9A;&#xFF0C;&#x6BD4;&#x539F;&#x751F;&#x7684;&#x8981;&#x5FEB;&#xFF08;&#x5F85;&#x89E3;&#xFF09;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bind</span> (<span class="hljs-params">fn: Function, ctx: Object</span>): <span class="hljs-title">Function</span> </span>{
+<h2 id="fn-bind">[fn] bind</h2><p>&#x2606;</p><p>&#x7B80;&#x5355;&#x7684;&#x7ED1;&#x5B9A;&#xFF0C;&#x6BD4;&#x539F;&#x751F;&#x7684;&#x8981;&#x5FEB;&#xFF08;&#x5F85;&#x89E3;&#xFF09;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bind</span> (<span class="hljs-params">fn: Function, ctx: Object</span>): <span class="hljs-title">Function</span> </span>{
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boundFn</span> (<span class="hljs-params">a</span>) </span>{
     <span class="hljs-keyword">const</span> l: number = <span class="hljs-built_in">arguments</span>.length
     <span class="hljs-keyword">return</span> l
@@ -934,7 +934,7 @@ isBuiltInTag(<span class="hljs-string">&apos;a&apos;</span>) <span class="hljs-c
   }
   <span class="hljs-keyword">return</span> to
 }</code></pre>
-<h2 id="&#x2606;-fn-isobject">&#x2606; [fn] isObject</h2><p>&#x7528;&#x4E8E;&#x5FEB;&#x901F;&#x68C0;&#x67E5;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x4E3A; &apos;object&apos; &#xFF08;&#x5F85;&#x89E3;&#xFF09;</p><pre><code class="lang-javascript"><span class="hljs-comment">/**
+<h2 id="fn-isobject">[fn] isObject</h2><p>&#x2606;</p><p>&#x7528;&#x4E8E;&#x5FEB;&#x901F;&#x68C0;&#x67E5;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x4E3A; &apos;object&apos;</p><pre><code class="lang-javascript"><span class="hljs-comment">/**
  * Quick object check - this is primarily used to tell
  * Objects from primitive values when we know the value
  * is a JSON-compliant type.
@@ -1002,7 +1002,7 @@ isBuiltInTag(<span class="hljs-string">&apos;a&apos;</span>) <span class="hljs-c
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"☆ util.js","level":"1.2.5.1","depth":3,"next":{"title":"platforms","level":"1.2.6","depth":2,"ref":"","articles":[{"title":"web","level":"1.2.6.1","depth":3,"ref":"","articles":[]}]},"previous":{"title":"★ shared","level":"1.2.5","depth":2,"path":"Vue/shared/index.md","ref":"Vue/shared/index.md","articles":[{"title":"☆ util.js","level":"1.2.5.1","depth":3,"path":"Vue/shared/util.md","ref":"Vue/shared/util.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/shared/util.md","mtime":"2016-09-01T06:12:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T03:42:47.456Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"☆ util.js","level":"1.2.5.1","depth":3,"next":{"title":"platforms","level":"1.2.6","depth":2,"ref":"","articles":[{"title":"web","level":"1.2.6.1","depth":3,"ref":"","articles":[]}]},"previous":{"title":"★ shared","level":"1.2.5","depth":2,"path":"Vue/shared/index.md","ref":"Vue/shared/index.md","articles":[{"title":"☆ util.js","level":"1.2.5.1","depth":3,"path":"Vue/shared/util.md","ref":"Vue/shared/util.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/shared/util.md","mtime":"2016-09-01T10:12:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T08:24:40.613Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

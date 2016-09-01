@@ -1,6 +1,6 @@
 * Vue
   * [★ core](Vue/core/index.md)
-    - [☆ config.js](Vue/core/config.md)
+    - [★ config.js](Vue/core/config.md)
     - [★ util](Vue/core/util/index.md)
       * [★ debug.js](Vue/core/util/debug.md)
       * [★ env.js](Vue/core/util/env.md)

@@ -42,3 +42,7 @@ function initAssetRegisters (Vue: GlobalAPI) {
   })
 }
 ```
+
+- [config](../config.md)
+- [warn](../util/debug.md#fn-warn)
+- [isPlainObject](../../shared/util.md#fn-isplainobject)

@@ -52,3 +52,16 @@ function mergeOptions (
 
 ## ☆ [fn] resolveAsset
 （待解）
+
+
+- [Vue](../instance/index.md#vue-vue)
+- [config](../config.md)
+- [warn](../util/debug.md#fn-warn)
+- [set](../observer/index.md#fn-set)
+- [extend](../../shared/util.md#fn-extend)
+- [isObject](../../shared/util.md#fn-isobject)
+- [isPlainObject](../../shared/util.md#fn-isplainobject)
+- [hasOwn](../../shared/util.md#fn-hasown)
+- [camelize](../../shared/util.md#fn-camelize)
+- [capitalize](../../shared/util.md#fn-capitalize)
+- [isBuiltInTag](../../shared/util.md#fn-isbuiltintag)

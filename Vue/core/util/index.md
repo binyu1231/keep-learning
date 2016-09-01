@@ -2,12 +2,12 @@
 
 | name | content |
 |:---:|:---|
-|`index.js`|导出|
-|`debug.js`|warn formatComponentName 两个调试函数|
-|`env.js`|检测环境，实现兼容的 nextTick 和 _Set|
-|`lang.js`|作用于变量的工具函数|
-|`options.js`|对配置项进行操作|
-|`props.js`|验证组件的属性|
+|[index.js](#indexjs)|导出|
+|[debug.js](./debug.md)|warn formatComponentName 两个调试函数|
+|[env.js](./env.md)|检测环境，实现兼容的 nextTick 和 _Set|
+|[lang.js](./lang.md)|作用于变量的工具函数|
+|[options.js](./options.md)|对配置项进行操作|
+|[props.js](./props.md)|验证组件的属性|
 
 # index.js
 

@@ -4,9 +4,6 @@
 
 为组件添加事件功能。
 
-- Vue/shared/util.js [fn]bind
-- updateListeners 未完成缺链接
-
 ``` javascript
 function initEvents (vm: Component) {
   vm._events = Object.create(null)
@@ -26,6 +23,10 @@ function initEvents (vm: Component) {
   }
 }
 ```
+
+- [bind](../../shared/util.md#fn-bind)
+- [toArray](../../shared/util.md#fn-toarray)
+- [updateListeners](../vdom/helpers.md#fn-updateListeners)
 
 ## [fn] eventsMixin
 

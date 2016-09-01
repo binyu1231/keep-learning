@@ -65,3 +65,7 @@ function initExtend (Vue: GlobalAPI) {
   }
 }
 ```
+
+- [config](../config.md)
+- [warn](../util/debug.md#fn-warn)
+- [mergeOptions](../util/options.md#fn-mergeoptions)

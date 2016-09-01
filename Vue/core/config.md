@@ -1,86 +1,76 @@
 # Vue/core/config.js
 
 ``` javascript
-/* @flow */
-
-import { no, noop } from 'shared/util'
-
-export type Config = {
-  // user
-  optionMergeStrategies: { [key: string]: Function };
-  silent: boolean;
-  devtools: boolean;
-  errorHandler: ?Function;
-  ignoredElements: ?Array<string>;
-  keyCodes: { [key: string]: number };
-  // platform
-  isReservedTag: (x?: string) => boolean;
-  isUnknownElement: (x?: string) => boolean;
-  getTagNamespace: (x?: string) => string | void;
-  mustUseProp: (x?: string) => boolean;
-  // internal
-  _assetTypes: Array<string>;
-  _lifecycleHooks: Array<string>;
-  _maxUpdateCount: number;
-  _isServer: boolean;
-}
-
 const config: Config = {
+  // user
+
   /**
-   * Option merge strategies (used in core/util/options)
+   * 选项合并策略，（用于core/util/options）
+   * @type { [key: string]: Function }
    */
   optionMergeStrategies: Object.create(null),
 
   /**
-   * Whether to suppress warnings.
+   * 是否屏蔽警告
+   * @type boolean
    */
   silent: false,
 
   /**
-   * Whether to enable devtools
+   * 是否启动开发工具
+   * @type boolean
    */
   devtools: process.env.NODE_ENV !== 'production',
 
   /**
-   * Error handler for watcher errors
+   * watcher 错误处理器
+   * @type ?Function
    */
   errorHandler: null,
 
   /**
-   * Ignore certain custom elements
+   * 忽略的自定义元素
+   * @type ?Array<string>
    */
   ignoredElements: null,
 
   /**
-   * Custom user key aliases for v-on
+   * 为绑定（v-on）键设置别名
+   * @type { [key: string]: number }
    */
   keyCodes: Object.create(null),
 
+  // platform
   /**
-   * Check if a tag is reserved so that it cannot be registered as a
-   * component. This is platform-dependent and may be overwritten.
+   * 检查一个标签是否已经被转换了
+   * 被转换的标签不能注册成一个组件 - 依赖平台并有可能被覆盖
+   * @type (x?: string) => boolean
    */
   isReservedTag: no,
 
   /**
-   * Check if a tag is an unknown element.
-   * Platform-dependent.
+   * 检查一个标签是否为位置元素 - 依赖平台
+   * @type (x?: string) => boolean
    */
   isUnknownElement: no,
 
   /**
-   * Get the namespace of an element
+   * 获取一个元素的命名空间
+   * @type (x?: string) => string | void
    */
   getTagNamespace: noop,
 
   /**
-   * Check if an attribute must be bound using property, e.g. value
-   * Platform-dependent.
+   * 检查一个 attribute 是否必须使用属性绑定 e.g. value - 依赖平台
+   * @type (x?: string) => boolean
    */
   mustUseProp: no,
 
+  // internal
+
   /**
-   * List of asset types that a component can own.
+   * 组件可以拥有的资源类型
+   * @type Array<string>
    */
   _assetTypes: [
     'component',
@@ -89,7 +79,8 @@ const config: Config = {
   ],
 
   /**
-   * List of lifecycle hooks.
+   * 生命周期钩子函数名列表
+   * @type Array<string>
    */
   _lifecycleHooks: [
     'beforeCreate',
@@ -105,12 +96,14 @@ const config: Config = {
   ],
 
   /**
-   * Max circular updates allowed in a scheduler flush cycle.
+   * 在一次 scheduler 刷新循环中允许的最大循环更新数量
+   * @type number
    */
   _maxUpdateCount: 100,
 
   /**
-   * Server rendering?
+   * 在一次 scheduler 刷新循环中允许的最大循环更新数量
+   * @type boolean
    */
   _isServer: process.env.VUE_ENV === 'server'
 }
@@ -118,3 +111,5 @@ const config: Config = {
 export default config
 
 ```
+
+- [no, noop](../shared/util.md#fn-no)

@@ -2,7 +2,7 @@
 
 非生产环境下，会导出两个函数 formatComponentName 和 warn
 
-## [fn]formatComponentName
+## [fn] formatComponentName
 
 返回组件的名字。可能的情况有：根实例，有名字的组件，匿名组件
 
@@ -18,7 +18,7 @@ formatComponentName = vm => {
 }
 ```
 
-## [fn]warn
+## [fn] warn
 
 打印错误信息和位置。
 
@@ -42,3 +42,5 @@ const formatLocation = str => {
   return `(found in ${str})`
 }
 ```
+
+- [config](../config.md)

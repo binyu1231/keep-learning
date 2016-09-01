@@ -2,11 +2,11 @@
 
 | name | content |
 |:---:|:---|
-|`index.js`|暴露了一些工具函数给其他部分用|
-|`assets.js`|将 config 中的配置（'component', 'directive', 'filter'）方法注册到 Vue 上|
-|`extend.js`| 添加 Vue.extend |
-|`mixin.js`| 添加 Vue.mixin |
-|`use.js`| 添加 Vue.use |
+|[index.js](#indexjs)|暴露了一些工具函数给其他部分用|
+|[assets.js](./assets.md)|将 config 中的配置（'component', 'directive', 'filter'）方法注册到 Vue 上|
+|[extend.js](./extend.md)| 添加 Vue.extend |
+|[mixin.js](./mixin.md)| 添加 Vue.mixin |
+|[use.js](./use.md)| 添加 Vue.use |
 
 
 /core/global-api 中的代码比较好理解，主要在 Vue 上添加一些公用方法。经过梳理我们大概就知道了。Vue的外围是什么样的。
@@ -48,3 +48,15 @@ function initGlobalAPI (Vue: GlobalAPI) {
   initAssetRegisters(Vue) // 初始化 Vue.component Vue.directive Vue.filter
 }
 ```
+
+
+- [util](../util/index.md)
+- [util.extend](../../shared/util.md#fn-extend)
+- [util.nextTick](../util/env.md#fn-nexttick)
+- [set](../observer/index.md#fn-set)
+- [del](../observer/index.md#fn-del)
+- [builtInComponents](../components/index.md#indexjs)
+- [initUse](./use.md#fn-inituse)
+- [initMixin](./mixin.md#fn-initmixin)
+- [initExtend](./extend.md#fn-initextend)
+- [initAssetRegisters](./assets.md#fn-initassetregisters)

@@ -24,3 +24,5 @@ function initUse (Vue: GlobalAPI) {
   }
 }
 ```
+
+- [toArray](../../shared/util.md#fn-toarray)

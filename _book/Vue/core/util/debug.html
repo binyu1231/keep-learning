@@ -135,7 +135,7 @@
                 <a href="../config.html">
             
                     
-                    ☆ config.js
+                    ★ config.js
             
                 </a>
             
@@ -843,7 +843,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="vuecoreutildebugjs">Vue/core/util/debug.js</h1><p>&#x975E;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x4F1A;&#x5BFC;&#x51FA;&#x4E24;&#x4E2A;&#x51FD;&#x6570; formatComponentName &#x548C; warn</p><h2 id="fnformatcomponentname">[fn]formatComponentName</h2><p>&#x8FD4;&#x56DE;&#x7EC4;&#x4EF6;&#x7684;&#x540D;&#x5B57;&#x3002;&#x53EF;&#x80FD;&#x7684;&#x60C5;&#x51B5;&#x6709;&#xFF1A;&#x6839;&#x5B9E;&#x4F8B;&#xFF0C;&#x6709;&#x540D;&#x5B57;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x533F;&#x540D;&#x7EC4;&#x4EF6;</p><pre><code class="lang-javascript">formatComponentName = vm =&gt; {
+                                <h1 id="vuecoreutildebugjs">Vue/core/util/debug.js</h1><p>&#x975E;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x4F1A;&#x5BFC;&#x51FA;&#x4E24;&#x4E2A;&#x51FD;&#x6570; formatComponentName &#x548C; warn</p><h2 id="fn-formatcomponentname">[fn] formatComponentName</h2><p>&#x8FD4;&#x56DE;&#x7EC4;&#x4EF6;&#x7684;&#x540D;&#x5B57;&#x3002;&#x53EF;&#x80FD;&#x7684;&#x60C5;&#x51B5;&#x6709;&#xFF1A;&#x6839;&#x5B9E;&#x4F8B;&#xFF0C;&#x6709;&#x540D;&#x5B57;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x533F;&#x540D;&#x7EC4;&#x4EF6;</p><pre><code class="lang-javascript">formatComponentName = vm =&gt; {
   <span class="hljs-keyword">if</span> (vm.$root === vm) {
     <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;root instance&apos;</span>
   }
@@ -852,7 +852,7 @@
     : vm.name
   <span class="hljs-keyword">return</span> name ? <span class="hljs-string">`component &lt;<span class="hljs-subst">${name}</span>&gt;`</span> : <span class="hljs-string">`anonymous component`</span>
 }</code></pre>
-<h2 id="fnwarn">[fn]warn</h2><p>&#x6253;&#x5370;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x548C;&#x4F4D;&#x7F6E;&#x3002;</p><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> hasConsole = <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">console</span> !== <span class="hljs-string">&apos;undefined&apos;</span>
+<h2 id="fn-warn">[fn] warn</h2><p>&#x6253;&#x5370;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x548C;&#x4F4D;&#x7F6E;&#x3002;</p><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> hasConsole = <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">console</span> !== <span class="hljs-string">&apos;undefined&apos;</span>
 
 warn = (msg, vm) =&gt; {
   <span class="hljs-comment">// console &#x5B58;&#x5728;&#xFF0C;&#x975E;&#x9759;&#x9ED8;</span>
@@ -870,6 +870,8 @@ warn = (msg, vm) =&gt; {
   }
   <span class="hljs-keyword">return</span> <span class="hljs-string">`(found in <span class="hljs-subst">${str}</span>)`</span>
 }</code></pre>
+<ul><li><a href="../config.html">config</a>
+</li></ul>
 
                                 
                                 </section>
@@ -913,7 +915,7 @@ warn = (msg, vm) =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"★ debug.js","level":"1.2.1.2.1","depth":4,"next":{"title":"★ env.js","level":"1.2.1.2.2","depth":4,"path":"Vue/core/util/env.md","ref":"Vue/core/util/env.md","articles":[]},"previous":{"title":"★ util","level":"1.2.1.2","depth":3,"path":"Vue/core/util/index.md","ref":"Vue/core/util/index.md","articles":[{"title":"★ debug.js","level":"1.2.1.2.1","depth":4,"path":"Vue/core/util/debug.md","ref":"Vue/core/util/debug.md","articles":[]},{"title":"★ env.js","level":"1.2.1.2.2","depth":4,"path":"Vue/core/util/env.md","ref":"Vue/core/util/env.md","articles":[]},{"title":"★ lang.js","level":"1.2.1.2.3","depth":4,"path":"Vue/core/util/lang.md","ref":"Vue/core/util/lang.md","articles":[]},{"title":"☆ options.js","level":"1.2.1.2.4","depth":4,"path":"Vue/core/util/options.md","ref":"Vue/core/util/options.md","articles":[]},{"title":"☆ props.js","level":"1.2.1.2.5","depth":4,"path":"Vue/core/util/props.md","ref":"Vue/core/util/props.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/util/debug.md","mtime":"2016-09-01T06:24:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T03:42:47.456Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"★ debug.js","level":"1.2.1.2.1","depth":4,"next":{"title":"★ env.js","level":"1.2.1.2.2","depth":4,"path":"Vue/core/util/env.md","ref":"Vue/core/util/env.md","articles":[]},"previous":{"title":"★ util","level":"1.2.1.2","depth":3,"path":"Vue/core/util/index.md","ref":"Vue/core/util/index.md","articles":[{"title":"★ debug.js","level":"1.2.1.2.1","depth":4,"path":"Vue/core/util/debug.md","ref":"Vue/core/util/debug.md","articles":[]},{"title":"★ env.js","level":"1.2.1.2.2","depth":4,"path":"Vue/core/util/env.md","ref":"Vue/core/util/env.md","articles":[]},{"title":"★ lang.js","level":"1.2.1.2.3","depth":4,"path":"Vue/core/util/lang.md","ref":"Vue/core/util/lang.md","articles":[]},{"title":"☆ options.js","level":"1.2.1.2.4","depth":4,"path":"Vue/core/util/options.md","ref":"Vue/core/util/options.md","articles":[]},{"title":"☆ props.js","level":"1.2.1.2.5","depth":4,"path":"Vue/core/util/props.md","ref":"Vue/core/util/props.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/util/debug.md","mtime":"2016-09-01T09:45:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T08:24:40.613Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

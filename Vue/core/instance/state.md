@@ -1,6 +1,8 @@
 # Vue/core/instance/state.js
 
-## ☆ [fn] initState
+## [fn] initState
+
+☆
 
 在 Vue.prototype.\_init 被调用，初始化组件的选项
 
@@ -15,7 +17,9 @@ function initState (vm: Component) {
 }
 ```
 
-## ☆ [fn] stateMixin
+## [fn] stateMixin
+
+☆
 
 ``` javascript
 function stateMixin (Vue: Class<Component>) {

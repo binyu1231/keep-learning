@@ -1,26 +1,20 @@
-# Vue/core/install
+# Vue/core/instance
 
 | name | content |
 |:---:|:---|
-|`index.js`|导出|
-|`event.js`|$on $off $once $emit|
-|`init.js`|Vue.prototype._init 初始化|
-|`lifecycle.js`|实现生命周期|
-|`proxy.js`||
-|`render.js`|render 选项|
-|`state.js`|props/data/computed/methods/watch 选项|
+|index.js|导出|
+|[event.js](./events.md)|$on $off $once $emit|
+|[init.js](./init.md)|Vue.prototype._init 初始化|
+|[lifecycle.js](./lifecycle.md)|实现生命周期|
+|[proxy.js](./proxy.md)||
+|[render.js](./render.md)|render 选项|
+|[state.js](./state.md)|props/data/computed/methods/watch 选项|
 
 # index.js
 
 ## [Vue] Vue
 
 ``` javascript
-import { initMixin } from './init'
-import { stateMixin } from './state'
-import { renderMixin } from './render'
-import { eventsMixin } from './events'
-import { lifecycleMixin } from './lifecycle'
-
 function Vue (options) {
   this._init(options)
 }
@@ -44,3 +38,9 @@ renderMixin(Vue)
 // 导出 Vue 构造函数
 export default Vue
 ```
+
+- [initMixin](./init.md#fn-initmixin)
+- [stateMixin](./state.md#fn-statemixin)
+- [renderMixin](./render.md#fn-rendermixin)
+- [eventsMixin](./events.md#fn-eventsmixin)
+- [lifecycleMixin](./lifecycle.md#fn-lifecyclemixin)

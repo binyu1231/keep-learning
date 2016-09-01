@@ -51,3 +51,6 @@ export default {
   }
 }
 ```
+
+- [callHook](../instance/lifecycle.md#fn-callhook)
+- [getFirstComponentChild](../vdom/helpers.md#fn-getfirstcomponentchild)

@@ -77,7 +77,8 @@ function remove (arr: Array<any>, item: any): Array<any> | void {
 }
 ```
 
-## [fn] hasOwnProperty、[fn] hasOwn
+## [fn] hasOwn
+## [fn] hasOwnProperty
 
 查看一个对象（第一个参数）是否有某种属性（第二个参数）
 
@@ -147,7 +148,9 @@ const hyphenate = cached((str: string): string => {
 })
 ```
 
-## ☆ [fn] bind
+## [fn] bind
+
+☆
 
 简单的绑定，比原生的要快（待解）
 
@@ -196,9 +199,11 @@ function extend (to: Object, _from: ?Object): Object {
 }
 ```
 
-## ☆ [fn] isObject
+## [fn] isObject
 
-用于快速检查类型是否为 'object' （待解）
+☆
+
+用于快速检查类型是否为 'object'
 
 ``` javascript
 /**

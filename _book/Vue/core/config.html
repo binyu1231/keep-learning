@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>☆ config.js · GitBook</title>
+        <title>★ config.js · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -135,7 +135,7 @@
                 <a href="config.html">
             
                     
-                    ☆ config.js
+                    ★ config.js
             
                 </a>
             
@@ -828,7 +828,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >☆ config.js</a>
+        <a href="../.." >★ config.js</a>
     </h1>
 </div>
 
@@ -843,86 +843,76 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="vuecoreconfigjs">Vue/core/config.js</h1><pre><code class="lang-javascript"><span class="hljs-comment">/* @flow */</span>
-
-<span class="hljs-keyword">import</span> { no, noop } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;shared/util&apos;</span>
-
-<span class="hljs-keyword">export</span> type Config = {
+                                <h1 id="vuecoreconfigjs">Vue/core/config.js</h1><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> config: Config = {
   <span class="hljs-comment">// user</span>
-  optionMergeStrategies: { [key: string]: <span class="hljs-built_in">Function</span> };
-  silent: boolean;
-  devtools: boolean;
-  errorHandler: ?<span class="hljs-built_in">Function</span>;
-  ignoredElements: ?<span class="hljs-built_in">Array</span>&lt;string&gt;;
-  keyCodes: { [key: string]: number };
-  <span class="hljs-comment">// platform</span>
-  isReservedTag: (x?: string) =&gt; boolean;
-  isUnknownElement: (x?: string) =&gt; boolean;
-  getTagNamespace: (x?: string) =&gt; string | <span class="hljs-keyword">void</span>;
-  mustUseProp: (x?: string) =&gt; boolean;
-  <span class="hljs-comment">// internal</span>
-  _assetTypes: <span class="hljs-built_in">Array</span>&lt;string&gt;;
-  _lifecycleHooks: <span class="hljs-built_in">Array</span>&lt;string&gt;;
-  _maxUpdateCount: number;
-  _isServer: boolean;
-}
 
-<span class="hljs-keyword">const</span> config: Config = {
   <span class="hljs-comment">/**
-   * Option merge strategies (used in core/util/options)
+   * &#x9009;&#x9879;&#x5408;&#x5E76;&#x7B56;&#x7565;&#xFF0C;&#xFF08;&#x7528;&#x4E8E;core/util/options&#xFF09;
+   * @type { [key: string]: Function }
    */</span>
   optionMergeStrategies: <span class="hljs-built_in">Object</span>.create(<span class="hljs-literal">null</span>),
 
   <span class="hljs-comment">/**
-   * Whether to suppress warnings.
+   * &#x662F;&#x5426;&#x5C4F;&#x853D;&#x8B66;&#x544A;
+   * @type boolean
    */</span>
   silent: <span class="hljs-literal">false</span>,
 
   <span class="hljs-comment">/**
-   * Whether to enable devtools
+   * &#x662F;&#x5426;&#x542F;&#x52A8;&#x5F00;&#x53D1;&#x5DE5;&#x5177;
+   * @type boolean
    */</span>
   devtools: process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span>,
 
   <span class="hljs-comment">/**
-   * Error handler for watcher errors
+   * watcher &#x9519;&#x8BEF;&#x5904;&#x7406;&#x5668;
+   * @type ?Function
    */</span>
   errorHandler: <span class="hljs-literal">null</span>,
 
   <span class="hljs-comment">/**
-   * Ignore certain custom elements
+   * &#x5FFD;&#x7565;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x5143;&#x7D20;
+   * @type ?Array&lt;string&gt;
    */</span>
   ignoredElements: <span class="hljs-literal">null</span>,
 
   <span class="hljs-comment">/**
-   * Custom user key aliases for v-on
+   * &#x4E3A;&#x7ED1;&#x5B9A;&#xFF08;v-on&#xFF09;&#x952E;&#x8BBE;&#x7F6E;&#x522B;&#x540D;
+   * @type { [key: string]: number }
    */</span>
   keyCodes: <span class="hljs-built_in">Object</span>.create(<span class="hljs-literal">null</span>),
 
+  <span class="hljs-comment">// platform</span>
   <span class="hljs-comment">/**
-   * Check if a tag is reserved so that it cannot be registered as a
-   * component. This is platform-dependent and may be overwritten.
+   * &#x68C0;&#x67E5;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x88AB;&#x8F6C;&#x6362;&#x4E86;
+   * &#x88AB;&#x8F6C;&#x6362;&#x7684;&#x6807;&#x7B7E;&#x4E0D;&#x80FD;&#x6CE8;&#x518C;&#x6210;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6; - &#x4F9D;&#x8D56;&#x5E73;&#x53F0;&#x5E76;&#x6709;&#x53EF;&#x80FD;&#x88AB;&#x8986;&#x76D6;
+   * @type (x?: string) =&gt; boolean
    */</span>
   isReservedTag: no,
 
   <span class="hljs-comment">/**
-   * Check if a tag is an unknown element.
-   * Platform-dependent.
+   * &#x68C0;&#x67E5;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#x662F;&#x5426;&#x4E3A;&#x4F4D;&#x7F6E;&#x5143;&#x7D20; - &#x4F9D;&#x8D56;&#x5E73;&#x53F0;
+   * @type (x?: string) =&gt; boolean
    */</span>
   isUnknownElement: no,
 
   <span class="hljs-comment">/**
-   * Get the namespace of an element
+   * &#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;
+   * @type (x?: string) =&gt; string | void
    */</span>
   getTagNamespace: noop,
 
   <span class="hljs-comment">/**
-   * Check if an attribute must be bound using property, e.g. value
-   * Platform-dependent.
+   * &#x68C0;&#x67E5;&#x4E00;&#x4E2A; attribute &#x662F;&#x5426;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x5C5E;&#x6027;&#x7ED1;&#x5B9A; e.g. value - &#x4F9D;&#x8D56;&#x5E73;&#x53F0;
+   * @type (x?: string) =&gt; boolean
    */</span>
   mustUseProp: no,
 
+  <span class="hljs-comment">// internal</span>
+
   <span class="hljs-comment">/**
-   * List of asset types that a component can own.
+   * &#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x62E5;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x7C7B;&#x578B;
+   * @type Array&lt;string&gt;
    */</span>
   _assetTypes: [
     <span class="hljs-string">&apos;component&apos;</span>,
@@ -931,7 +921,8 @@
   ],
 
   <span class="hljs-comment">/**
-   * List of lifecycle hooks.
+   * &#x751F;&#x547D;&#x5468;&#x671F;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x540D;&#x5217;&#x8868;
+   * @type Array&lt;string&gt;
    */</span>
   _lifecycleHooks: [
     <span class="hljs-string">&apos;beforeCreate&apos;</span>,
@@ -947,18 +938,22 @@
   ],
 
   <span class="hljs-comment">/**
-   * Max circular updates allowed in a scheduler flush cycle.
+   * &#x5728;&#x4E00;&#x6B21; scheduler &#x5237;&#x65B0;&#x5FAA;&#x73AF;&#x4E2D;&#x5141;&#x8BB8;&#x7684;&#x6700;&#x5927;&#x5FAA;&#x73AF;&#x66F4;&#x65B0;&#x6570;&#x91CF;
+   * @type number
    */</span>
   _maxUpdateCount: <span class="hljs-number">100</span>,
 
   <span class="hljs-comment">/**
-   * Server rendering?
+   * &#x5728;&#x4E00;&#x6B21; scheduler &#x5237;&#x65B0;&#x5FAA;&#x73AF;&#x4E2D;&#x5141;&#x8BB8;&#x7684;&#x6700;&#x5927;&#x5FAA;&#x73AF;&#x66F4;&#x65B0;&#x6570;&#x91CF;
+   * @type boolean
    */</span>
   _isServer: process.env.VUE_ENV === <span class="hljs-string">&apos;server&apos;</span>
 }
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> config
 </code></pre>
+<ul><li><a href="../shared/util.html#fn-no">no, noop</a>
+</li></ul>
 
                                 
                                 </section>
@@ -1002,7 +997,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"☆ config.js","level":"1.2.1.1","depth":3,"next":{"title":"★ util","level":"1.2.1.2","depth":3,"path":"Vue/core/util/index.md","ref":"Vue/core/util/index.md","articles":[{"title":"★ debug.js","level":"1.2.1.2.1","depth":4,"path":"Vue/core/util/debug.md","ref":"Vue/core/util/debug.md","articles":[]},{"title":"★ env.js","level":"1.2.1.2.2","depth":4,"path":"Vue/core/util/env.md","ref":"Vue/core/util/env.md","articles":[]},{"title":"★ lang.js","level":"1.2.1.2.3","depth":4,"path":"Vue/core/util/lang.md","ref":"Vue/core/util/lang.md","articles":[]},{"title":"☆ options.js","level":"1.2.1.2.4","depth":4,"path":"Vue/core/util/options.md","ref":"Vue/core/util/options.md","articles":[]},{"title":"☆ props.js","level":"1.2.1.2.5","depth":4,"path":"Vue/core/util/props.md","ref":"Vue/core/util/props.md","articles":[]}]},"previous":{"title":"★ core","level":"1.2.1","depth":2,"path":"Vue/core/index.md","ref":"Vue/core/index.md","articles":[{"title":"☆ config.js","level":"1.2.1.1","depth":3,"path":"Vue/core/config.md","ref":"Vue/core/config.md","articles":[]},{"title":"★ util","level":"1.2.1.2","depth":3,"path":"Vue/core/util/index.md","ref":"Vue/core/util/index.md","articles":[{"title":"★ debug.js","level":"1.2.1.2.1","depth":4,"path":"Vue/core/util/debug.md","ref":"Vue/core/util/debug.md","articles":[]},{"title":"★ env.js","level":"1.2.1.2.2","depth":4,"path":"Vue/core/util/env.md","ref":"Vue/core/util/env.md","articles":[]},{"title":"★ lang.js","level":"1.2.1.2.3","depth":4,"path":"Vue/core/util/lang.md","ref":"Vue/core/util/lang.md","articles":[]},{"title":"☆ options.js","level":"1.2.1.2.4","depth":4,"path":"Vue/core/util/options.md","ref":"Vue/core/util/options.md","articles":[]},{"title":"☆ props.js","level":"1.2.1.2.5","depth":4,"path":"Vue/core/util/props.md","ref":"Vue/core/util/props.md","articles":[]}]},{"title":"★ global-api","level":"1.2.1.3","depth":3,"path":"Vue/core/global-api/index.md","ref":"Vue/core/global-api/index.md","articles":[{"title":"★ assets.js","level":"1.2.1.3.1","depth":4,"path":"Vue/core/global-api/assets.md","ref":"Vue/core/global-api/assets.md","articles":[]},{"title":"★ extend.js","level":"1.2.1.3.2","depth":4,"path":"Vue/core/global-api/extend.md","ref":"Vue/core/global-api/extend.md","articles":[]},{"title":"★ mixin.js","level":"1.2.1.3.3","depth":4,"path":"Vue/core/global-api/mixin.md","ref":"Vue/core/global-api/mixin.md","articles":[]},{"title":"★ use.js","level":"1.2.1.3.4","depth":4,"path":"Vue/core/global-api/use.md","ref":"Vue/core/global-api/use.md","articles":[]}]},{"title":"★ instance","level":"1.2.1.4","depth":3,"path":"Vue/core/instance/index.md","ref":"Vue/core/instance/index.md","articles":[{"title":"★ init.js","level":"1.2.1.4.1","depth":4,"path":"Vue/core/instance/init.md","ref":"Vue/core/instance/init.md","articles":[]},{"title":"★ events.js","level":"1.2.1.4.2","depth":4,"path":"Vue/core/instance/events.md","ref":"Vue/core/instance/events.md","articles":[]},{"title":"★ lifecycle.js","level":"1.2.1.4.3","depth":4,"path":"Vue/core/instance/lifecycle.md","ref":"Vue/core/instance/lifecycle.md","articles":[]},{"title":"☆ proxy.js","level":"1.2.1.4.4","depth":4,"path":"Vue/core/instance/proxy.md","ref":"Vue/core/instance/proxy.md","articles":[]},{"title":"☆ render.js","level":"1.2.1.4.5","depth":4,"path":"Vue/core/instance/render.md","ref":"Vue/core/instance/render.md","articles":[]},{"title":"☆ state.js","level":"1.2.1.4.6","depth":4,"path":"Vue/core/instance/state.md","ref":"Vue/core/instance/state.md","articles":[]}]},{"title":"★ observer","level":"1.2.1.5","depth":3,"path":"Vue/core/observer/index.md","ref":"Vue/core/observer/index.md","articles":[{"title":"★ array.js","level":"1.2.1.5.1","depth":4,"path":"Vue/core/observer/array.md","ref":"Vue/core/observer/array.md","articles":[]},{"title":"★ dep.js","level":"1.2.1.5.2","depth":4,"path":"Vue/core/observer/dep.md","ref":"Vue/core/observer/dep.md","articles":[]},{"title":"☆ scheduler.js","level":"1.2.1.5.3","depth":4,"path":"Vue/core/observer/scheduler.md","ref":"Vue/core/observer/scheduler.md","articles":[]},{"title":"☆ watcher.js","level":"1.2.1.5.4","depth":4,"path":"Vue/core/observer/watcher.md","ref":"Vue/core/observer/watcher.md","articles":[]}]},{"title":"☆ vdom","level":"1.2.1.6","depth":3,"path":"Vue/core/vdom/index.md","ref":"Vue/core/vdom/index.md","articles":[{"title":"☆ create-component.js","level":"1.2.1.6.1","depth":4,"path":"Vue/core/vdom/create-component.md","ref":"Vue/core/vdom/create-component.md","articles":[]},{"title":"☆ create-element.js","level":"1.2.1.6.2","depth":4,"path":"Vue/core/vdom/create-element.md","ref":"Vue/core/vdom/create-element.md","articles":[]},{"title":"☆ helpers.js","level":"1.2.1.6.3","depth":4,"path":"Vue/core/vdom/helpers.md","ref":"Vue/core/vdom/helpers.md","articles":[]},{"title":"☆ patch.js","level":"1.2.1.6.4","depth":4,"path":"Vue/core/vdom/patch.md","ref":"Vue/core/vdom/patch.md","articles":[]},{"title":"☆ vnode.js","level":"1.2.1.6.5","depth":4,"path":"Vue/core/vdom/vnode.md","ref":"Vue/core/vdom/vnode.md","articles":[]},{"title":"☆ modules","level":"1.2.1.6.6","depth":4,"path":"Vue/core/vdom/modules/index.md","ref":"Vue/core/vdom/modules/index.md","articles":[{"title":"☆ directives.js","level":"1.2.1.6.6.1","depth":5,"path":"Vue/core/vdom/modules/directives.md","ref":"Vue/core/vdom/modules/directives.md","articles":[]},{"title":"☆ ref.js","level":"1.2.1.6.6.2","depth":5,"path":"Vue/core/vdom/modules/ref.md","ref":"Vue/core/vdom/modules/ref.md","articles":[]}]}]},{"title":"★ components","level":"1.2.1.7","depth":3,"path":"Vue/core/components/index.md","ref":"Vue/core/components/index.md","articles":[{"title":"☆ keep-alive.js","level":"1.2.1.7.1","depth":4,"path":"Vue/core/components/keep-alive.md","ref":"Vue/core/components/keep-alive.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/config.md","mtime":"2016-09-01T07:34:05.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T03:42:47.456Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"★ config.js","level":"1.2.1.1","depth":3,"next":{"title":"★ util","level":"1.2.1.2","depth":3,"path":"Vue/core/util/index.md","ref":"Vue/core/util/index.md","articles":[{"title":"★ debug.js","level":"1.2.1.2.1","depth":4,"path":"Vue/core/util/debug.md","ref":"Vue/core/util/debug.md","articles":[]},{"title":"★ env.js","level":"1.2.1.2.2","depth":4,"path":"Vue/core/util/env.md","ref":"Vue/core/util/env.md","articles":[]},{"title":"★ lang.js","level":"1.2.1.2.3","depth":4,"path":"Vue/core/util/lang.md","ref":"Vue/core/util/lang.md","articles":[]},{"title":"☆ options.js","level":"1.2.1.2.4","depth":4,"path":"Vue/core/util/options.md","ref":"Vue/core/util/options.md","articles":[]},{"title":"☆ props.js","level":"1.2.1.2.5","depth":4,"path":"Vue/core/util/props.md","ref":"Vue/core/util/props.md","articles":[]}]},"previous":{"title":"★ core","level":"1.2.1","depth":2,"path":"Vue/core/index.md","ref":"Vue/core/index.md","articles":[{"title":"★ config.js","level":"1.2.1.1","depth":3,"path":"Vue/core/config.md","ref":"Vue/core/config.md","articles":[]},{"title":"★ util","level":"1.2.1.2","depth":3,"path":"Vue/core/util/index.md","ref":"Vue/core/util/index.md","articles":[{"title":"★ debug.js","level":"1.2.1.2.1","depth":4,"path":"Vue/core/util/debug.md","ref":"Vue/core/util/debug.md","articles":[]},{"title":"★ env.js","level":"1.2.1.2.2","depth":4,"path":"Vue/core/util/env.md","ref":"Vue/core/util/env.md","articles":[]},{"title":"★ lang.js","level":"1.2.1.2.3","depth":4,"path":"Vue/core/util/lang.md","ref":"Vue/core/util/lang.md","articles":[]},{"title":"☆ options.js","level":"1.2.1.2.4","depth":4,"path":"Vue/core/util/options.md","ref":"Vue/core/util/options.md","articles":[]},{"title":"☆ props.js","level":"1.2.1.2.5","depth":4,"path":"Vue/core/util/props.md","ref":"Vue/core/util/props.md","articles":[]}]},{"title":"★ global-api","level":"1.2.1.3","depth":3,"path":"Vue/core/global-api/index.md","ref":"Vue/core/global-api/index.md","articles":[{"title":"★ assets.js","level":"1.2.1.3.1","depth":4,"path":"Vue/core/global-api/assets.md","ref":"Vue/core/global-api/assets.md","articles":[]},{"title":"★ extend.js","level":"1.2.1.3.2","depth":4,"path":"Vue/core/global-api/extend.md","ref":"Vue/core/global-api/extend.md","articles":[]},{"title":"★ mixin.js","level":"1.2.1.3.3","depth":4,"path":"Vue/core/global-api/mixin.md","ref":"Vue/core/global-api/mixin.md","articles":[]},{"title":"★ use.js","level":"1.2.1.3.4","depth":4,"path":"Vue/core/global-api/use.md","ref":"Vue/core/global-api/use.md","articles":[]}]},{"title":"★ instance","level":"1.2.1.4","depth":3,"path":"Vue/core/instance/index.md","ref":"Vue/core/instance/index.md","articles":[{"title":"★ init.js","level":"1.2.1.4.1","depth":4,"path":"Vue/core/instance/init.md","ref":"Vue/core/instance/init.md","articles":[]},{"title":"★ events.js","level":"1.2.1.4.2","depth":4,"path":"Vue/core/instance/events.md","ref":"Vue/core/instance/events.md","articles":[]},{"title":"★ lifecycle.js","level":"1.2.1.4.3","depth":4,"path":"Vue/core/instance/lifecycle.md","ref":"Vue/core/instance/lifecycle.md","articles":[]},{"title":"☆ proxy.js","level":"1.2.1.4.4","depth":4,"path":"Vue/core/instance/proxy.md","ref":"Vue/core/instance/proxy.md","articles":[]},{"title":"☆ render.js","level":"1.2.1.4.5","depth":4,"path":"Vue/core/instance/render.md","ref":"Vue/core/instance/render.md","articles":[]},{"title":"☆ state.js","level":"1.2.1.4.6","depth":4,"path":"Vue/core/instance/state.md","ref":"Vue/core/instance/state.md","articles":[]}]},{"title":"★ observer","level":"1.2.1.5","depth":3,"path":"Vue/core/observer/index.md","ref":"Vue/core/observer/index.md","articles":[{"title":"★ array.js","level":"1.2.1.5.1","depth":4,"path":"Vue/core/observer/array.md","ref":"Vue/core/observer/array.md","articles":[]},{"title":"★ dep.js","level":"1.2.1.5.2","depth":4,"path":"Vue/core/observer/dep.md","ref":"Vue/core/observer/dep.md","articles":[]},{"title":"☆ scheduler.js","level":"1.2.1.5.3","depth":4,"path":"Vue/core/observer/scheduler.md","ref":"Vue/core/observer/scheduler.md","articles":[]},{"title":"☆ watcher.js","level":"1.2.1.5.4","depth":4,"path":"Vue/core/observer/watcher.md","ref":"Vue/core/observer/watcher.md","articles":[]}]},{"title":"☆ vdom","level":"1.2.1.6","depth":3,"path":"Vue/core/vdom/index.md","ref":"Vue/core/vdom/index.md","articles":[{"title":"☆ create-component.js","level":"1.2.1.6.1","depth":4,"path":"Vue/core/vdom/create-component.md","ref":"Vue/core/vdom/create-component.md","articles":[]},{"title":"☆ create-element.js","level":"1.2.1.6.2","depth":4,"path":"Vue/core/vdom/create-element.md","ref":"Vue/core/vdom/create-element.md","articles":[]},{"title":"☆ helpers.js","level":"1.2.1.6.3","depth":4,"path":"Vue/core/vdom/helpers.md","ref":"Vue/core/vdom/helpers.md","articles":[]},{"title":"☆ patch.js","level":"1.2.1.6.4","depth":4,"path":"Vue/core/vdom/patch.md","ref":"Vue/core/vdom/patch.md","articles":[]},{"title":"☆ vnode.js","level":"1.2.1.6.5","depth":4,"path":"Vue/core/vdom/vnode.md","ref":"Vue/core/vdom/vnode.md","articles":[]},{"title":"☆ modules","level":"1.2.1.6.6","depth":4,"path":"Vue/core/vdom/modules/index.md","ref":"Vue/core/vdom/modules/index.md","articles":[{"title":"☆ directives.js","level":"1.2.1.6.6.1","depth":5,"path":"Vue/core/vdom/modules/directives.md","ref":"Vue/core/vdom/modules/directives.md","articles":[]},{"title":"☆ ref.js","level":"1.2.1.6.6.2","depth":5,"path":"Vue/core/vdom/modules/ref.md","ref":"Vue/core/vdom/modules/ref.md","articles":[]}]}]},{"title":"★ components","level":"1.2.1.7","depth":3,"path":"Vue/core/components/index.md","ref":"Vue/core/components/index.md","articles":[{"title":"☆ keep-alive.js","level":"1.2.1.7.1","depth":4,"path":"Vue/core/components/keep-alive.md","ref":"Vue/core/components/keep-alive.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/config.md","mtime":"2016-09-01T08:53:40.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T08:24:40.613Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

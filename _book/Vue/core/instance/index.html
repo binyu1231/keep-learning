@@ -135,7 +135,7 @@
                 <a href="../config.html">
             
                     
-                    ☆ config.js
+                    ★ config.js
             
                 </a>
             
@@ -843,34 +843,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="vuecoreinstall">Vue/core/install</h1><table>
+                                <h1 id="vuecoreinstance">Vue/core/instance</h1><table>
 <thead>
 <tr><th>name</th>
 <th>content</th>
 </tr></thead><tbody>
-<tr><td style="text-align:center"><code>index.js</code></td>
+<tr><td style="text-align:center">index.js</td>
 <td style="text-align:left">&#x5BFC;&#x51FA;</td>
-</tr><tr><td style="text-align:center"><code>event.js</code></td>
+</tr><tr><td style="text-align:center"><a href="events.html">event.js</a></td>
 <td style="text-align:left">$on $off $once $emit</td>
-</tr><tr><td style="text-align:center"><code>init.js</code></td>
+</tr><tr><td style="text-align:center"><a href="init.html">init.js</a></td>
 <td style="text-align:left">Vue.prototype._init &#x521D;&#x59CB;&#x5316;</td>
-</tr><tr><td style="text-align:center"><code>lifecycle.js</code></td>
+</tr><tr><td style="text-align:center"><a href="lifecycle.html">lifecycle.js</a></td>
 <td style="text-align:left">&#x5B9E;&#x73B0;&#x751F;&#x547D;&#x5468;&#x671F;</td>
-</tr><tr><td style="text-align:center"><code>proxy.js</code></td>
+</tr><tr><td style="text-align:center"><a href="proxy.html">proxy.js</a></td>
 <td style="text-align:left"></td>
-</tr><tr><td style="text-align:center"><code>render.js</code></td>
+</tr><tr><td style="text-align:center"><a href="render.html">render.js</a></td>
 <td style="text-align:left">render &#x9009;&#x9879;</td>
-</tr><tr><td style="text-align:center"><code>state.js</code></td>
+</tr><tr><td style="text-align:center"><a href="state.html">state.js</a></td>
 <td style="text-align:left">props/data/computed/methods/watch &#x9009;&#x9879;</td>
 </tr></tbody></table>
 
-<h1 id="indexjs">index.js</h1><h2 id="vue-vue">[Vue] Vue</h2><pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { initMixin } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./init&apos;</span>
-<span class="hljs-keyword">import</span> { stateMixin } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./state&apos;</span>
-<span class="hljs-keyword">import</span> { renderMixin } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./render&apos;</span>
-<span class="hljs-keyword">import</span> { eventsMixin } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./events&apos;</span>
-<span class="hljs-keyword">import</span> { lifecycleMixin } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./lifecycle&apos;</span>
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Vue</span> (<span class="hljs-params">options</span>) </span>{
+<h1 id="indexjs">index.js</h1><h2 id="vue-vue">[Vue] Vue</h2><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Vue</span> (<span class="hljs-params">options</span>) </span>{
   <span class="hljs-keyword">this</span>._init(options)
 }
 
@@ -892,6 +886,16 @@ renderMixin(Vue)
 
 <span class="hljs-comment">// &#x5BFC;&#x51FA; Vue &#x6784;&#x9020;&#x51FD;&#x6570;</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Vue</code></pre>
+<ul><li><a href="init.html#fn-initmixin">initMixin</a>
+</li>
+<li><a href="state.html#fn-statemixin">stateMixin</a>
+</li>
+<li><a href="render.html#fn-rendermixin">renderMixin</a>
+</li>
+<li><a href="events.html#fn-eventsmixin">eventsMixin</a>
+</li>
+<li><a href="lifecycle.html#fn-lifecyclemixin">lifecycleMixin</a>
+</li></ul>
 
                                 
                                 </section>
@@ -935,7 +939,7 @@ renderMixin(Vue)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"★ instance","level":"1.2.1.4","depth":3,"next":{"title":"★ init.js","level":"1.2.1.4.1","depth":4,"path":"Vue/core/instance/init.md","ref":"Vue/core/instance/init.md","articles":[]},"previous":{"title":"★ use.js","level":"1.2.1.3.4","depth":4,"path":"Vue/core/global-api/use.md","ref":"Vue/core/global-api/use.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/instance/index.md","mtime":"2016-09-01T06:42:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T03:42:47.456Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"★ instance","level":"1.2.1.4","depth":3,"next":{"title":"★ init.js","level":"1.2.1.4.1","depth":4,"path":"Vue/core/instance/init.md","ref":"Vue/core/instance/init.md","articles":[]},"previous":{"title":"★ use.js","level":"1.2.1.3.4","depth":4,"path":"Vue/core/global-api/use.md","ref":"Vue/core/global-api/use.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/instance/index.md","mtime":"2016-09-01T10:07:43.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T08:24:40.613Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
