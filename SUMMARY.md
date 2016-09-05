@@ -6,7 +6,7 @@
       * [★ env.js](Vue/core/util/env.md)
       * [★ lang.js](Vue/core/util/lang.md)
       * [☆ options.js](Vue/core/util/options.md)
-      * [☆ props.js](Vue/core/util/props.md)
+      * [★ props.js](Vue/core/util/props.md)
     - [★ global-api](Vue/core/global-api/index.md)
       * [★ assets.js](Vue/core/global-api/assets.md)
       * [★ extend.js](Vue/core/global-api/extend.md)

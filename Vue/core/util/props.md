@@ -70,7 +70,7 @@ function getPropDefaultValue (vm: ?Component, prop: PropOptions, name: string): 
   // or props: { aaa: { default: String } }
 
   const def = prop.default
-  // 不能是作为工厂函数的 default 不能是 Object || Array 类型
+  // 作为工厂函数的 default 不能是 Object || Array 类型
   if (isObject(def)) {
     process.env.NODE_ENV !== 'production' && warn(
       'Invalid default value for prop "' + name + '": ' +
@@ -108,15 +108,22 @@ function assertProp (
     warn('Missing required prop: "' + name + '"', vm)
     return
   }
+
+  // 非必填项值为逻辑假，不报错
   if (value == null && !prop.required) return
+
 
   let type = prop.type
   let valid = !type
   const expectedTypes = []
+
+  // 指定了类型
   if (type) {
     if (!Array.isArray(type)) {
+      // 非数组转化为数组，@多类型参数实现
       type = [type]
     }
+    // 满足数组中某一种类型即为合法
     for (let i = 0; i < type.length && !valid; i++) {
       const assertedType = assertType(value, type[i])
       expectedTypes.push(assertedType.expectedType)
@@ -124,6 +131,7 @@ function assertProp (
     }
   }
   if (!valid) {
+    // 指定了类型 && 不合法 
     warn(
       'Invalid prop: type check failed for prop "' + name + '".' +
       ' Expected ' + expectedTypes.map(capitalize).join(', ') +
@@ -132,6 +140,7 @@ function assertProp (
     )
     return
   }
+  // 使用自定义验证器验证
   const validator = prop.validator
   if (validator) {
     if (!validator(value)) {
@@ -150,7 +159,7 @@ function assertProp (
 
 _[fn] assertType_
 
-断言参数类型
+判断参数类型
 
 ``` javascript
 function assertType (value: any, type: Function): {
