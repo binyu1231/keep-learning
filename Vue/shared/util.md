@@ -199,24 +199,29 @@ function extend (to: Object, _from: ?Object): Object {
 
 ## [fn] isObject
 
-☆
-
-用于快速检查类型是否为 'object'
+对象是否是兼容 JSON 格式的值
 
 ``` javascript
-/**
- * Quick object check - this is primarily used to tell
- * Objects from primitive values when we know the value
- * is a JSON-compliant type.
- */
 function isObject (obj: any): boolean {
   return obj !== null && typeof obj === 'object'
 }
 ```
 
+eg:
+
+``` javascript
+isObject(123)              // false 'number'
+isObject('123')            // false 'string'
+isObject([1, 2, 3])        // true  'object'
+isObject({ 1: 23 })        // true  'object'
+isObject(function a () {}) // false 'function'
+isObject(null)             // false 'object'
+isObject(String)           // false 'function'
+```
+
 ## [fn] isPlainObject
 
-检查是否是纯 js 对象，即含有0个及以上键值对的对象，`toString.call(null) => [object, Null]`
+检查是否是纯 js 对象，即含有0个及以上键值对的对象。
 
 ``` javascript
 const toString = Object.prototype.toString
@@ -224,6 +229,18 @@ const OBJECT_STRING = '[object Object]'
 function isPlainObject (obj: any): boolean {
   return toString.call(obj) === OBJECT_STRING
 }
+```
+
+eg:
+
+``` javascript
+isPlainObject(123)              // false '[object Number]'
+isPlainObject('123')            // false '[object String]'
+isPlainObject([1, 2, 3])        // false '[object Array]'
+isPlainObject({ 1: 23 })        // true  '[object Object]'
+isPlainObject(function a () {}) // false '[object, Function]'
+isPlainObject(null)             // false '[object, Null]'
+isPlainObject(new Set())        // false '[object Set]'
 ```
 
 ## [fn] toObject
@@ -258,7 +275,7 @@ function noop () {}
 export const no = () => false
 ```
 
-## ☆ [fn] genStaticKeys
+## [fn] genStaticKeys
 
 从编译器模块中生成一个静态的字符串密钥
 

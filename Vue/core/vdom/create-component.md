@@ -43,8 +43,8 @@ function createComponent (
         context.$forceUpdate()
       })
       if (!Ctor) {
-        // return nothing if this is indeed an async component
-        // wait for the callback to trigger parent update.
+        // 如果这确实是异步组件则不返回任何东西
+        // 等待回调函数触发父级的更新
         return
       }
     }
@@ -52,14 +52,14 @@ function createComponent (
 
   data = data || {}
 
-  // 提取 props
+  // 提取 props extractProps 🔽🔽🔽
   const propsData = extractProps(data, Ctor)
 
-  // functional component
+  // 功能性组件 createFunctionalComponent 🔽🔽🔽
   if (Ctor.options.functional) {
     return createFunctionalComponent(Ctor, propsData, data, context, children)
   }
-
+  // 提取监听器，
   // extract listeners, since these needs to be treated as
   // child component listeners instead of DOM listeners
   const listeners = data.on
@@ -82,6 +82,55 @@ function createComponent (
     { Ctor, propsData, listeners, tag, children }
   )
   return vnode
+}
+```
+
+- [Vue.extend](../global-api/extend.md)
+- [$forceUpdate](../instance/lifecycle.md#vueprototypeforceupdate)
+- [warn](../util/debug.md#fn-warn)
+
+_resolveAsyncComponent_
+
+``` javascript
+function resolveAsyncComponent (
+  factory: Function,
+  cb: Function
+): Class<Component> | void {
+  if (factory.requested) {
+    // pool callbacks
+    factory.pendingCallbacks.push(cb)
+  } else {
+    factory.requested = true
+    const cbs = factory.pendingCallbacks = [cb]
+    let sync = true
+    factory(
+      // resolve
+      (res: Object | Class<Component>) => {
+        if (isObject(res)) {
+          res = Vue.extend(res)
+        }
+        // cache resolved
+        factory.resolved = res
+        // invoke callbacks only if this is not a synchronous resolve
+        // (async resolves are shimmed as synchronous during SSR)
+        if (!sync) {
+          for (let i = 0, l = cbs.length; i < l; i++) {
+            cbs[i](res)
+          }
+        }
+      },
+      // reject
+      reason => {
+        process.env.NODE_ENV !== 'production' && warn(
+          `Failed to resolve async component: ${factory}` +
+          (reason ? `\nReason: ${reason}` : '')
+        )
+      }
+    )
+    sync = false
+    // return in case resolved synchronously
+    return factory.resolved
+  }
 }
 ```
 
@@ -113,14 +162,11 @@ function createComponentInstanceForVnode (
 }
 ```
 
-- [Vue.extend](../global-api/extend.md)
 - [VNode](./vnode.md)
 - [normalizeChildren](./helpers.md#fn-normalizechildren)
 - [activeInstance](../instance/lifecycle.md#any-activeinstance)
 - [callHook](../instance/lifecycle.md#fn-callhook)
-- [$forceUpdate](../instance/lifecycle.md#vueprototypeforceupdate)
 - [resolveSlots](../instance/render.md#fn-resolveslots)
-- [warn](../util/debug.md#fn-warn)
 - [validateProp](../util/props.md#fn-validateProp)
 - [isObject](../../shared/util.md#fn-isobject)
 - [hasOwn](../../shared/util.md#fn-hasown)

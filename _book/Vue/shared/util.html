@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>☆ util.js · GitBook</title>
+        <title>★ util.js · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -707,7 +707,7 @@
                 <a href="util.html">
             
                     
-                    ☆ util.js
+                    ★ util.js
             
                 </a>
             
@@ -826,7 +826,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >☆ util.js</a>
+        <a href="../.." >★ util.js</a>
     </h1>
 </div>
 
@@ -934,19 +934,28 @@ isBuiltInTag(<span class="hljs-string">&apos;a&apos;</span>) <span class="hljs-c
   }
   <span class="hljs-keyword">return</span> to
 }</code></pre>
-<h2 id="fn-isobject">[fn] isObject</h2><p>&#x2606;</p><p>&#x7528;&#x4E8E;&#x5FEB;&#x901F;&#x68C0;&#x67E5;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x4E3A; &apos;object&apos;</p><pre><code class="lang-javascript"><span class="hljs-comment">/**
- * Quick object check - this is primarily used to tell
- * Objects from primitive values when we know the value
- * is a JSON-compliant type.
- */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isObject</span> (<span class="hljs-params">obj: any</span>): <span class="hljs-title">boolean</span> </span>{
+<h2 id="fn-isobject">[fn] isObject</h2><p>&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x662F;&#x517C;&#x5BB9; JSON &#x683C;&#x5F0F;&#x7684;&#x503C;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isObject</span> (<span class="hljs-params">obj: any</span>): <span class="hljs-title">boolean</span> </span>{
   <span class="hljs-keyword">return</span> obj !== <span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-keyword">typeof</span> obj === <span class="hljs-string">&apos;object&apos;</span>
 }</code></pre>
-<h2 id="fn-isplainobject">[fn] isPlainObject</h2><p>&#x68C0;&#x67E5;&#x662F;&#x5426;&#x662F;&#x7EAF; js &#x5BF9;&#x8C61;&#xFF0C;&#x5373;&#x542B;&#x6709;0&#x4E2A;&#x53CA;&#x4EE5;&#x4E0A;&#x952E;&#x503C;&#x5BF9;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;<code>toString.call(null) =&gt; [object, Null]</code></p><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> toString = <span class="hljs-built_in">Object</span>.prototype.toString
+<p>eg:</p><pre><code class="lang-javascript">isObject(<span class="hljs-number">123</span>)              <span class="hljs-comment">// false &apos;number&apos;</span>
+isObject(<span class="hljs-string">&apos;123&apos;</span>)            <span class="hljs-comment">// false &apos;string&apos;</span>
+isObject([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])        <span class="hljs-comment">// true  &apos;object&apos;</span>
+isObject({ <span class="hljs-number">1</span>: <span class="hljs-number">23</span> })        <span class="hljs-comment">// true  &apos;object&apos;</span>
+isObject(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span> (<span class="hljs-params"></span>) </span>{}) <span class="hljs-comment">// false &apos;function&apos;</span>
+isObject(<span class="hljs-literal">null</span>)             <span class="hljs-comment">// false &apos;object&apos;</span>
+isObject(<span class="hljs-built_in">String</span>)           <span class="hljs-comment">// false &apos;function&apos;</span></code></pre>
+<h2 id="fn-isplainobject">[fn] isPlainObject</h2><p>&#x68C0;&#x67E5;&#x662F;&#x5426;&#x662F;&#x7EAF; js &#x5BF9;&#x8C61;&#xFF0C;&#x5373;&#x542B;&#x6709;0&#x4E2A;&#x53CA;&#x4EE5;&#x4E0A;&#x952E;&#x503C;&#x5BF9;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> toString = <span class="hljs-built_in">Object</span>.prototype.toString
 <span class="hljs-keyword">const</span> OBJECT_STRING = <span class="hljs-string">&apos;[object Object]&apos;</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPlainObject</span> (<span class="hljs-params">obj: any</span>): <span class="hljs-title">boolean</span> </span>{
   <span class="hljs-keyword">return</span> toString.call(obj) === OBJECT_STRING
 }</code></pre>
+<p>eg:</p><pre><code class="lang-javascript">isPlainObject(<span class="hljs-number">123</span>)              <span class="hljs-comment">// false &apos;[object Number]&apos;</span>
+isPlainObject(<span class="hljs-string">&apos;123&apos;</span>)            <span class="hljs-comment">// false &apos;[object String]&apos;</span>
+isPlainObject([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])        <span class="hljs-comment">// false &apos;[object Array]&apos;</span>
+isPlainObject({ <span class="hljs-number">1</span>: <span class="hljs-number">23</span> })        <span class="hljs-comment">// true  &apos;[object Object]&apos;</span>
+isPlainObject(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span> (<span class="hljs-params"></span>) </span>{}) <span class="hljs-comment">// false &apos;[object, Function]&apos;</span>
+isPlainObject(<span class="hljs-literal">null</span>)             <span class="hljs-comment">// false &apos;[object, Null]&apos;</span>
+isPlainObject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>())        <span class="hljs-comment">// false &apos;[object Set]&apos;</span></code></pre>
 <h2 id="fn-toobject">[fn] toObject</h2><p>&#x5C06;&#x6570;&#x7EC4;&#x4E2D;&#x6240;&#x6709;&#x5BF9;&#x8C61;&#x5408;&#x5E76;&#x5230;&#x5355;&#x72EC;&#x7684;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E0A;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toObject</span> (<span class="hljs-params">arr: Array&lt;any&gt;</span>): <span class="hljs-title">Object</span> </span>{
   <span class="hljs-keyword">const</span> res = arr[<span class="hljs-number">0</span>] || {}
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) {
@@ -958,7 +967,7 @@ isBuiltInTag(<span class="hljs-string">&apos;a&apos;</span>) <span class="hljs-c
 }</code></pre>
 <h2 id="fn-noop">[fn] noop</h2><p>&#x4E0D;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">noop</span> (<span class="hljs-params"></span>) </span>{}</code></pre>
 <h2 id="fn-no">[fn] no</h2><p>&#x603B;&#x8FD4;&#x56DE; false</p><pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> no = () =&gt; <span class="hljs-literal">false</span></code></pre>
-<h2 id="&#x2606;-fn-genstatickeys">&#x2606; [fn] genStaticKeys</h2><p>&#x4ECE;&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5757;&#x4E2D;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5BC6;&#x94A5;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">genStaticKeys</span> (<span class="hljs-params">modules: Array&lt;ModuleOptions&gt;</span>): <span class="hljs-title">string</span> </span>{
+<h2 id="fn-genstatickeys">[fn] genStaticKeys</h2><p>&#x4ECE;&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5757;&#x4E2D;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5BC6;&#x94A5;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">genStaticKeys</span> (<span class="hljs-params">modules: Array&lt;ModuleOptions&gt;</span>): <span class="hljs-title">string</span> </span>{
   <span class="hljs-keyword">return</span> modules.reduce((keys, m) =&gt; {
     <span class="hljs-keyword">return</span> keys.concat(m.staticKeys || [])
   }, []).join(<span class="hljs-string">&apos;,&apos;</span>)
@@ -1002,7 +1011,7 @@ isBuiltInTag(<span class="hljs-string">&apos;a&apos;</span>) <span class="hljs-c
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"☆ util.js","level":"1.2.5.1","depth":3,"next":{"title":"platforms","level":"1.2.6","depth":2,"ref":"","articles":[{"title":"web","level":"1.2.6.1","depth":3,"ref":"","articles":[]}]},"previous":{"title":"★ shared","level":"1.2.5","depth":2,"path":"Vue/shared/index.md","ref":"Vue/shared/index.md","articles":[{"title":"☆ util.js","level":"1.2.5.1","depth":3,"path":"Vue/shared/util.md","ref":"Vue/shared/util.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/shared/util.md","mtime":"2016-09-05T06:02:05.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-05T01:59:29.155Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"★ util.js","level":"1.2.5.1","depth":3,"next":{"title":"platforms","level":"1.2.6","depth":2,"ref":"","articles":[{"title":"web","level":"1.2.6.1","depth":3,"ref":"","articles":[]}]},"previous":{"title":"★ shared","level":"1.2.5","depth":2,"path":"Vue/shared/index.md","ref":"Vue/shared/index.md","articles":[{"title":"★ util.js","level":"1.2.5.1","depth":3,"path":"Vue/shared/util.md","ref":"Vue/shared/util.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/shared/util.md","mtime":"2016-09-05T08:30:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-05T01:59:29.155Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

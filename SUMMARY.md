@@ -40,7 +40,7 @@
   * [★ sfc](Vue/sfc/index.md)
     - [★ parser.js](Vue/sfc/parser.md)
   * [★ shared](Vue/shared/index.md)
-    - [☆ util.js](Vue/shared/util.md)
+    - [★ util.js](Vue/shared/util.md)
   * platforms
     - web
   * server

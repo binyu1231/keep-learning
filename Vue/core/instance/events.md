@@ -7,7 +7,7 @@
 ``` javascript
 function initEvents (vm: Component) {
   vm._events = Object.create(null)
-  // 初始化父级的附加事件
+  // 初始化父级的附加事件d
   const listeners = vm.$options._parentListeners
   // 定义组件的绑定与解绑的函数
   const on = bind(vm.$on, vm)

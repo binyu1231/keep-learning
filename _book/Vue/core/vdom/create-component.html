@@ -709,7 +709,7 @@
                 <a href="../../shared/util.html">
             
                     
-                    ☆ util.js
+                    ★ util.js
             
                 </a>
             
@@ -883,8 +883,8 @@
         context.$forceUpdate()
       })
       <span class="hljs-keyword">if</span> (!Ctor) {
-        <span class="hljs-comment">// return nothing if this is indeed an async component</span>
-        <span class="hljs-comment">// wait for the callback to trigger parent update.</span>
+        <span class="hljs-comment">// &#x5982;&#x679C;&#x8FD9;&#x786E;&#x5B9E;&#x662F;&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;&#x5219;&#x4E0D;&#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;</span>
+        <span class="hljs-comment">// &#x7B49;&#x5F85;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x89E6;&#x53D1;&#x7236;&#x7EA7;&#x7684;&#x66F4;&#x65B0;</span>
         <span class="hljs-keyword">return</span>
       }
     }
@@ -892,14 +892,14 @@
 
   data = data || {}
 
-  <span class="hljs-comment">// &#x63D0;&#x53D6; props</span>
+  <span class="hljs-comment">// &#x63D0;&#x53D6; props extractProps &#x1F53D;&#x1F53D;&#x1F53D;</span>
   <span class="hljs-keyword">const</span> propsData = extractProps(data, Ctor)
 
-  <span class="hljs-comment">// functional component</span>
+  <span class="hljs-comment">// &#x529F;&#x80FD;&#x6027;&#x7EC4;&#x4EF6; createFunctionalComponent &#x1F53D;&#x1F53D;&#x1F53D;</span>
   <span class="hljs-keyword">if</span> (Ctor.options.functional) {
     <span class="hljs-keyword">return</span> createFunctionalComponent(Ctor, propsData, data, context, children)
   }
-
+  <span class="hljs-comment">// &#x63D0;&#x53D6;&#x76D1;&#x542C;&#x5668;&#xFF0C;</span>
   <span class="hljs-comment">// extract listeners, since these needs to be treated as</span>
   <span class="hljs-comment">// child component listeners instead of DOM listeners</span>
   <span class="hljs-keyword">const</span> listeners = data.on
@@ -923,6 +923,52 @@
   )
   return vnode
 }</span></code></pre>
+<ul><li><a href="../global-api/extend.html">Vue.extend</a>
+</li>
+<li><a href="../instance/lifecycle.html#vueprototypeforceupdate">$forceUpdate</a>
+</li>
+<li><a href="../util/debug.html#fn-warn">warn</a>
+</li></ul>
+<p><em>resolveAsyncComponent</em></p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolveAsyncComponent</span> (<span class="hljs-params">
+  factory: Function,
+  cb: Function
+</span>): <span class="hljs-title">Class</span>&lt;<span class="hljs-title">Component</span>&gt; | <span class="hljs-title">void</span> </span>{
+  <span class="hljs-keyword">if</span> (factory.requested) {
+    <span class="hljs-comment">// pool callbacks</span>
+    factory.pendingCallbacks.push(cb)
+  } <span class="hljs-keyword">else</span> {
+    factory.requested = <span class="hljs-literal">true</span>
+    <span class="hljs-keyword">const</span> cbs = factory.pendingCallbacks = [cb]
+    <span class="hljs-keyword">let</span> sync = <span class="hljs-literal">true</span>
+    factory(
+      <span class="hljs-comment">// resolve</span>
+      (res: <span class="hljs-built_in">Object</span> | Class&lt;Component&gt;) =&gt; {
+        <span class="hljs-keyword">if</span> (isObject(res)) {
+          res = Vue.extend(res)
+        }
+        <span class="hljs-comment">// cache resolved</span>
+        factory.resolved = res
+        <span class="hljs-comment">// invoke callbacks only if this is not a synchronous resolve</span>
+        <span class="hljs-comment">// (async resolves are shimmed as synchronous during SSR)</span>
+        <span class="hljs-keyword">if</span> (!sync) {
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>, l = cbs.length; i &lt; l; i++) {
+            cbs[i](res)
+          }
+        }
+      },
+      <span class="hljs-comment">// reject</span>
+      reason =&gt; {
+        process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span> &amp;&amp; warn(
+          <span class="hljs-string">`Failed to resolve async component: <span class="hljs-subst">${factory}</span>`</span> +
+          (reason ? <span class="hljs-string">`\nReason: <span class="hljs-subst">${reason}</span>`</span> : <span class="hljs-string">&apos;&apos;</span>)
+        )
+      }
+    )
+    sync = <span class="hljs-literal">false</span>
+    <span class="hljs-comment">// return in case resolved synchronously</span>
+    <span class="hljs-keyword">return</span> factory.resolved
+  }
+}</code></pre>
 <h2 id="fn-createcomponentinstanceforvnode">[fn] createComponentInstanceForVnode</h2><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createComponentInstanceForVnode</span> (<span class="hljs-params">
   vnode: any, <span class="hljs-comment">// we know it&apos;s MountedComponentVNode but flow doesn&apos;t</span>
   parent: any <span class="hljs-comment">// activeInstance in lifecycle state</span>
@@ -945,9 +991,7 @@
   }
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> vnodeComponentOptions.Ctor(options)
 }</code></pre>
-<ul><li><a href="../global-api/extend.html">Vue.extend</a>
-</li>
-<li><a href="vnode.html">VNode</a>
+<ul><li><a href="vnode.html">VNode</a>
 </li>
 <li><a href="helpers.html#fn-normalizechildren">normalizeChildren</a>
 </li>
@@ -955,11 +999,7 @@
 </li>
 <li><a href="../instance/lifecycle.html#fn-callhook">callHook</a>
 </li>
-<li><a href="../instance/lifecycle.html#vueprototypeforceupdate">$forceUpdate</a>
-</li>
 <li><a href="../instance/render.html#fn-resolveslots">resolveSlots</a>
-</li>
-<li><a href="../util/debug.html#fn-warn">warn</a>
 </li>
 <li><a href="../util/props.html#fn-validateProp">validateProp</a>
 </li>
@@ -1012,7 +1052,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"☆ create-component.js","level":"1.2.1.6.1","depth":4,"next":{"title":"☆ create-element.js","level":"1.2.1.6.2","depth":4,"path":"Vue/core/vdom/create-element.md","ref":"Vue/core/vdom/create-element.md","articles":[]},"previous":{"title":"☆ vdom","level":"1.2.1.6","depth":3,"path":"Vue/core/vdom/index.md","ref":"Vue/core/vdom/index.md","articles":[{"title":"☆ create-component.js","level":"1.2.1.6.1","depth":4,"path":"Vue/core/vdom/create-component.md","ref":"Vue/core/vdom/create-component.md","articles":[]},{"title":"☆ create-element.js","level":"1.2.1.6.2","depth":4,"path":"Vue/core/vdom/create-element.md","ref":"Vue/core/vdom/create-element.md","articles":[]},{"title":"☆ helpers.js","level":"1.2.1.6.3","depth":4,"path":"Vue/core/vdom/helpers.md","ref":"Vue/core/vdom/helpers.md","articles":[]},{"title":"☆ patch.js","level":"1.2.1.6.4","depth":4,"path":"Vue/core/vdom/patch.md","ref":"Vue/core/vdom/patch.md","articles":[]},{"title":"☆ vnode.js","level":"1.2.1.6.5","depth":4,"path":"Vue/core/vdom/vnode.md","ref":"Vue/core/vdom/vnode.md","articles":[]},{"title":"☆ modules","level":"1.2.1.6.6","depth":4,"path":"Vue/core/vdom/modules/index.md","ref":"Vue/core/vdom/modules/index.md","articles":[{"title":"☆ directives.js","level":"1.2.1.6.6.1","depth":5,"path":"Vue/core/vdom/modules/directives.md","ref":"Vue/core/vdom/modules/directives.md","articles":[]},{"title":"☆ ref.js","level":"1.2.1.6.6.2","depth":5,"path":"Vue/core/vdom/modules/ref.md","ref":"Vue/core/vdom/modules/ref.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/vdom/create-component.md","mtime":"2016-09-05T05:22:30.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-05T01:59:29.155Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"☆ create-component.js","level":"1.2.1.6.1","depth":4,"next":{"title":"☆ create-element.js","level":"1.2.1.6.2","depth":4,"path":"Vue/core/vdom/create-element.md","ref":"Vue/core/vdom/create-element.md","articles":[]},"previous":{"title":"☆ vdom","level":"1.2.1.6","depth":3,"path":"Vue/core/vdom/index.md","ref":"Vue/core/vdom/index.md","articles":[{"title":"☆ create-component.js","level":"1.2.1.6.1","depth":4,"path":"Vue/core/vdom/create-component.md","ref":"Vue/core/vdom/create-component.md","articles":[]},{"title":"☆ create-element.js","level":"1.2.1.6.2","depth":4,"path":"Vue/core/vdom/create-element.md","ref":"Vue/core/vdom/create-element.md","articles":[]},{"title":"☆ helpers.js","level":"1.2.1.6.3","depth":4,"path":"Vue/core/vdom/helpers.md","ref":"Vue/core/vdom/helpers.md","articles":[]},{"title":"☆ patch.js","level":"1.2.1.6.4","depth":4,"path":"Vue/core/vdom/patch.md","ref":"Vue/core/vdom/patch.md","articles":[]},{"title":"☆ vnode.js","level":"1.2.1.6.5","depth":4,"path":"Vue/core/vdom/vnode.md","ref":"Vue/core/vdom/vnode.md","articles":[]},{"title":"☆ modules","level":"1.2.1.6.6","depth":4,"path":"Vue/core/vdom/modules/index.md","ref":"Vue/core/vdom/modules/index.md","articles":[{"title":"☆ directives.js","level":"1.2.1.6.6.1","depth":5,"path":"Vue/core/vdom/modules/directives.md","ref":"Vue/core/vdom/modules/directives.md","articles":[]},{"title":"☆ ref.js","level":"1.2.1.6.6.2","depth":5,"path":"Vue/core/vdom/modules/ref.md","ref":"Vue/core/vdom/modules/ref.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/vdom/create-component.md","mtime":"2016-09-05T08:07:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-05T01:59:29.155Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
