@@ -3,10 +3,13 @@
 ## [fn] createComponent
 
 ``` javascript
+const hooks = { init, prepatch, insert, destroy }
+const hooksToMerge = Object.keys(hooks)
+
 function createComponent (
   Ctor: Class<Component> | Function | Object | void,
   data?: VNodeData,
-  context: Component,
+  context: Component, // 上下文
   children?: VNodeChildren,
   tag?: string
 ): VNode | void {
@@ -15,6 +18,8 @@ function createComponent (
   }
 
   if (isObject(Ctor)) {
+    // Ctor 是对象，以 Ctor 创建组件
+    // 返回构造函数，进行下方判断
     Ctor = Vue.extend(Ctor)
   }
 
@@ -25,14 +30,16 @@ function createComponent (
     return
   }
 
-  // async component
+  // 异步组件
   if (!Ctor.cid) {
     if (Ctor.resolved) {
       Ctor = Ctor.resolved
     } else {
+      // 没有解析
       Ctor = resolveAsyncComponent(Ctor, () => {
-        // it's ok to queue this on every render because
-        // $forceUpdate is buffered by the scheduler.
+        // 每次渲染过程中改变队列是可行的，
+        // 因为 $forceUpdate 在异步情况下使用了 scheduler 进行缓冲
+        // Vue/core/observer/scheduler.js => [fn] queueWatcher
         context.$forceUpdate()
       })
       if (!Ctor) {
@@ -45,7 +52,7 @@ function createComponent (
 
   data = data || {}
 
-  // extract props
+  // 提取 props
   const propsData = extractProps(data, Ctor)
 
   // functional component
@@ -60,8 +67,7 @@ function createComponent (
   data.on = data.nativeOn
 
   if (Ctor.options.abstract) {
-    // abstract components do not keep anything
-    // other than props & listeners
+    // 抽象组件不保存 props 和监听器意外的任何东西
     data = {}
   }
 
@@ -106,3 +112,16 @@ function createComponentInstanceForVnode (
   return new vnodeComponentOptions.Ctor(options)
 }
 ```
+
+- [Vue.extend](../global-api/extend.md)
+- [VNode](./vnode.md)
+- [normalizeChildren](./helpers.md#fn-normalizechildren)
+- [activeInstance](../instance/lifecycle.md#any-activeinstance)
+- [callHook](../instance/lifecycle.md#fn-callhook)
+- [$forceUpdate](../instance/lifecycle.md#vueprototypeforceupdate)
+- [resolveSlots](../instance/render.md#fn-resolveslots)
+- [warn](../util/debug.md#fn-warn)
+- [validateProp](../util/props.md#fn-validateProp)
+- [isObject](../../shared/util.md#fn-isobject)
+- [hasOwn](../../shared/util.md#fn-hasown)
+- [hyphenate](../../shared/util.md#fn-hyphenate)

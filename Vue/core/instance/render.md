@@ -191,7 +191,9 @@ function renderMixin (Vue: Class<Component>) {
 }
 ```
 
-### ☆ [fn] resolveSlots
+### [fn] resolveSlots
+
+☆
 
 解析 slots
 

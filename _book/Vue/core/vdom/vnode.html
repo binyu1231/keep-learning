@@ -844,31 +844,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="vuecorevdomvnodejs">Vue/core/vdom/vnode.js</h2><h2 id="class-vnode">[class] VNode</h2><pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VNode</span> </span>{
-  tag: string | <span class="hljs-keyword">void</span>;
-  data: VNodeData | <span class="hljs-keyword">void</span>;
-  children: <span class="hljs-built_in">Array</span>&lt;VNode&gt; | <span class="hljs-keyword">void</span>;
-  text: string | <span class="hljs-keyword">void</span>;
-  elm: Node | <span class="hljs-keyword">void</span>;
-  ns: string | <span class="hljs-keyword">void</span>;
-  context: Component | <span class="hljs-keyword">void</span>; <span class="hljs-comment">// rendered in this component&apos;s scope</span>
-  key: string | number | <span class="hljs-keyword">void</span>;
-  componentOptions: VNodeComponentOptions | <span class="hljs-keyword">void</span>;
-  child: Component | <span class="hljs-keyword">void</span>; <span class="hljs-comment">// component instance</span>
-  parent: VNode | <span class="hljs-keyword">void</span>; <span class="hljs-comment">// compoennt placeholder node</span>
-  raw: ?boolean; <span class="hljs-comment">// contains raw HTML</span>
-  isStatic: ?boolean; <span class="hljs-comment">// hoisted static node</span>
-  isRootInsert: boolean; <span class="hljs-comment">// necessary for enter transition check</span>
-  isComment: boolean;
-
   <span class="hljs-keyword">constructor</span> (
-    tag?: string,
+    tag?: string,        // &#x6807;&#x7B7E;&#x540D;
     data?: VNodeData,
     children?: Array&lt;VNode&gt; | void,
     text?: string,
     elm?: Node,
-    ns?: string | void,
-    context?: Component,
-    componentOptions?: VNodeComponentOptions
+    ns?: string | void,  // &#x547D;&#x540D;&#x7A7A;&#x95F4;
+    context?: Component, // &#x5728;&#x8FD9;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x4F5C;&#x7528;&#x4E8E;&#x4E0B;&#x6E32;&#x67D3;
+    componentOptions?: VNodeComponentOptions // &#x865A;&#x62DF;&#x8282;&#x70B9;&#x662F;&#x7EC4;&#x4EF6;&#x7684;&#x5224;&#x65AD;&#x6807;&#x51C6;
   ) {
     <span class="hljs-keyword">this</span>.tag = tag
     <span class="hljs-keyword">this</span>.data = data
@@ -879,22 +863,22 @@
     <span class="hljs-keyword">this</span>.context = context
     <span class="hljs-keyword">this</span>.key = data &amp;&amp; data.key
     <span class="hljs-keyword">this</span>.componentOptions = componentOptions
-    <span class="hljs-keyword">this</span>.child = <span class="hljs-literal">undefined</span>
-    <span class="hljs-keyword">this</span>.parent = <span class="hljs-literal">undefined</span>
-    <span class="hljs-keyword">this</span>.raw = <span class="hljs-literal">false</span>
-    <span class="hljs-keyword">this</span>.isStatic = <span class="hljs-literal">false</span>
-    <span class="hljs-keyword">this</span>.isRootInsert = <span class="hljs-literal">true</span>
-    <span class="hljs-keyword">this</span>.isComment = <span class="hljs-literal">false</span>
-    <span class="hljs-comment">// apply construct hook.</span>
-    <span class="hljs-comment">// this is applied during render, before patch happens.</span>
-    <span class="hljs-comment">// unlike other hooks, this is applied on both client and server.</span>
+    <span class="hljs-keyword">this</span>.child = <span class="hljs-literal">undefined</span>   <span class="hljs-comment">// &#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;</span>
+    <span class="hljs-keyword">this</span>.parent = <span class="hljs-literal">undefined</span>  <span class="hljs-comment">// &#x7EC4;&#x4EF6;&#x5360;&#x4F4D;&#x8282;&#x70B9;</span>
+    <span class="hljs-keyword">this</span>.raw = <span class="hljs-literal">false</span>         <span class="hljs-comment">// &#x5305;&#x542B;&#x539F;&#x59CB;&#x7684; HTML</span>
+    <span class="hljs-keyword">this</span>.isStatic = <span class="hljs-literal">false</span>    <span class="hljs-comment">// &#x6302;&#x8D77;&#x7684;&#x9759;&#x6001;&#x8282;&#x70B9;</span>
+    <span class="hljs-keyword">this</span>.isRootInsert = <span class="hljs-literal">true</span> <span class="hljs-comment">// &#x8FDB;&#x5165;&#x8FC7;&#x6E21;&#x68C0;&#x67E5;&#x7684;&#x5FC5;&#x8981;&#x9879;</span>
+    <span class="hljs-keyword">this</span>.isComment = <span class="hljs-literal">false</span>   <span class="hljs-comment">// &#x662F;&#x6CE8;&#x91CA;</span>
+    <span class="hljs-comment">// &#x8C03;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x94A9;&#x5B50;</span>
+    <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x5728;&#x6E32;&#x67D3;&#xFF08;render&#xFF09;&#x671F;&#x95F4;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5728;&#x4FEE;&#x8865;&#xFF08;patch&#xFF09;&#x4E4B;&#x524D;</span>
+    <span class="hljs-comment">// &#x4E0D;&#x540C;&#x4E8E;&#x5176;&#x4ED6;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x90FD;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</span>
     <span class="hljs-keyword">const</span> constructHook = data &amp;&amp; data.hook &amp;&amp; data.hook.construct
     <span class="hljs-keyword">if</span> (constructHook) {
       constructHook(<span class="hljs-keyword">this</span>)
     }
   }
 }</code></pre>
-<h3 id="fn-emptyvnode">[fn] emptyVNode</h3><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> emptyVNode = () =&gt; {
+<h3 id="fn-emptyvnode">[fn] emptyVNode</h3><p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;&#x865A;&#x62DF;&#x8282;&#x70B9;</p><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> emptyVNode = () =&gt; {
   <span class="hljs-keyword">const</span> node = <span class="hljs-keyword">new</span> VNode()
   node.text = <span class="hljs-string">&apos;&apos;</span>
   node.isComment = <span class="hljs-literal">true</span>
@@ -943,7 +927,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"☆ vnode.js","level":"1.2.1.6.5","depth":4,"next":{"title":"☆ modules","level":"1.2.1.6.6","depth":4,"path":"Vue/core/vdom/modules/index.md","ref":"Vue/core/vdom/modules/index.md","articles":[{"title":"☆ directives.js","level":"1.2.1.6.6.1","depth":5,"path":"Vue/core/vdom/modules/directives.md","ref":"Vue/core/vdom/modules/directives.md","articles":[]},{"title":"☆ ref.js","level":"1.2.1.6.6.2","depth":5,"path":"Vue/core/vdom/modules/ref.md","ref":"Vue/core/vdom/modules/ref.md","articles":[]}]},"previous":{"title":"☆ patch.js","level":"1.2.1.6.4","depth":4,"path":"Vue/core/vdom/patch.md","ref":"Vue/core/vdom/patch.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/vdom/vnode.md","mtime":"2016-09-01T07:54:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-01T08:24:40.613Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"☆ vnode.js","level":"1.2.1.6.5","depth":4,"next":{"title":"☆ modules","level":"1.2.1.6.6","depth":4,"path":"Vue/core/vdom/modules/index.md","ref":"Vue/core/vdom/modules/index.md","articles":[{"title":"☆ directives.js","level":"1.2.1.6.6.1","depth":5,"path":"Vue/core/vdom/modules/directives.md","ref":"Vue/core/vdom/modules/directives.md","articles":[]},{"title":"☆ ref.js","level":"1.2.1.6.6.2","depth":5,"path":"Vue/core/vdom/modules/ref.md","ref":"Vue/core/vdom/modules/ref.md","articles":[]}]},"previous":{"title":"☆ patch.js","level":"1.2.1.6.4","depth":4,"path":"Vue/core/vdom/patch.md","ref":"Vue/core/vdom/patch.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/vdom/vnode.md","mtime":"2016-09-05T02:57:43.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-05T01:59:29.155Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

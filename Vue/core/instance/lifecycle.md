@@ -12,7 +12,7 @@
 function initLifecycle (vm: Component) {
   const options = vm.$options
 
-  // 找到最近一个非抽象父
+  // 找到最近的非抽象父级
   let parent = options.parent
   if (parent && !options.abstract) {
     while (parent.$options.abstract && parent.$parent) {

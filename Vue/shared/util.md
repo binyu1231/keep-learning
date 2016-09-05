@@ -2,7 +2,7 @@
 
 ## [fn] \_toString
 
-接收任何类型的参数并转化为字符串返回。null 返回空字符串，对象则返回缩进为2的对象型的字符串。
+接收任何类型的参数并转化为字符串返回。逻辑假值返回空字符串，对象则返回缩进为2的对象型的字符串，其他则直接转化为字符串。
 
 ``` javascript
 function _toString (val: any): string {
@@ -16,7 +16,7 @@ function _toString (val: any): string {
 
 ## [fn] toNumber
 
-将字符串转化为数字并返回，如果转化后的逻辑值为假则返回原字符串。
+将字符串转化为数字并返回，不能转化的返回原字符串。
 
 ``` javascript
 function toNumber (val: string): number | string {
@@ -27,12 +27,12 @@ function toNumber (val: string): number | string {
 
 ## [fn] makeMap
 
-将以逗号分隔的字符串转化成 map。并返回一个函数，这个函数接收一个字符串，判断这个字符串是否在这个 map 中。具体可以参考下面这个函数的用法
+将以逗号分隔的字符串转化成 map。并返回一个函数，这个函数接收一个字符串，判断这个字符串是否在这个 map 中。具体可以参考下面 isBuiltInTag 函数的用法。
 
 ``` javascript
 function makeMap (
   str: string,
-  expectsLowerCase?: boolean
+  expectsLowerCase?: boolean // 期望小写
 ): (key: string) => true | void {
   // 创建一个继承自 null 的 map
   const map = Object.create(null)
@@ -64,7 +64,7 @@ isBuiltInTag('a') // => false
 
 ## [fn] remove
 
-从数组（第一个参数）中删除一项（第二个参数）。
+从数组中删除一项。
 
 ``` javascript
 function remove (arr: Array<any>, item: any): Array<any> | void {
@@ -80,7 +80,7 @@ function remove (arr: Array<any>, item: any): Array<any> | void {
 ## [fn] hasOwn
 ## [fn] hasOwnProperty
 
-查看一个对象（第一个参数）是否有某种属性（第二个参数）
+查看一个对象是否有某种属性
 
 ``` javascript
 const hasOwnProperty = Object.prototype.hasOwnProperty
@@ -91,7 +91,7 @@ function hasOwn (obj: Object, key: string): boolean {
 
 ## [fn] isPrimitive
 
-判断是否为原始类型
+判断是否为原始类型（`string` 或者 `number`）
 
 ``` javascript
 function isPrimitive (value: any): boolean {
@@ -101,7 +101,7 @@ function isPrimitive (value: any): boolean {
 
 ## [fn] cached
 
-使用闭包在内存中缓存一个纯函数，重复使用时速度更快。
+使用闭包在内存中缓存一个函数所有的执行结果，重复使用时速度更快。
 
 ``` javascript
 function cached (fn: Function): Function {
@@ -115,7 +115,7 @@ function cached (fn: Function): Function {
 
 ## [fn] camelize
 
-将连字符形式的字符串转化为驼峰命名形式的字符串
+将连字符形式的字符串转化为驼峰命名形式的字符串。
 
 ``` javascript
 const camelizeRE = /-(\w)/g
@@ -136,23 +136,21 @@ const capitalize = cached((str: string): string => {
 
 ## [fn] hyphenate
 
-将以驼峰形式命名的字符串转化为连字符形式
+将以驼峰形式命名的字符串转化为连字符形式。
 
 ``` javascript
 const hyphenateRE = /([^-])([A-Z])/g
 const hyphenate = cached((str: string): string => {
   return str
     .replace(hyphenateRE, '$1-$2')
-    .replace(hyphenateRE, '$1-$2')
+    .replace(hyphenateRE, '$1-$2') // 连续的大写字母
     .toLowerCase()
 })
 ```
 
 ## [fn] bind
 
-☆
-
-简单的绑定，比原生的要快（待解）
+简单的绑定，比原生的要快。（函数长度有什么用？）
 
 ``` javascript
 function bind (fn: Function, ctx: Object): Function {
@@ -164,7 +162,7 @@ function bind (fn: Function, ctx: Object): Function {
         : fn.call(ctx, a)
       : fn.call(ctx)
   }
-  // record original fn length
+  // 标记原始函数的长度
   boundFn._length = fn.length
   return boundFn
 }
@@ -172,7 +170,7 @@ function bind (fn: Function, ctx: Object): Function {
 
 ## [fn] toArray
 
-将类似数组对象转化为真实的数组，可以指定转化的起始位置
+将类似数组对象转化为真实的数组，可以指定开始转化的位置。
 
 ``` javascript
 function toArray (list: any, start?: number): Array<any> {
