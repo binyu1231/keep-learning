@@ -1,959 +1,877 @@
+
 <!DOCTYPE HTML>
-<html lang="en" >
-    
+<html lang="" >
     <head>
-        
+        <title>★ observer · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>★ observer | </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.4.3">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
-        <meta name="HandheldFriendly" content="true"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
         
+    
     <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
     
         
-        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+    
         
     
+        
+    
+        
+    
+        
+    
+        
     
 
         
     
     
-    <link rel="next" href="../../../Vue/core/observer/array.html" />
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="array.html" />
     
     
-    <link rel="prev" href="../../../Vue/core/instance/state.html" />
+    <link rel="prev" href="../instance/state.html" />
     
 
-        
     </head>
     <body>
         
+<div class="book">
+    <div class="book-summary">
         
-    <div class="book" data-level="1.1.5" data-basepath="../../.." data-revision="Mon Sep 05 2016 21:48:08 GMT+0800 (CST)">
-    
-
-<div class="book-summary">
-    <div class="book-search" role="search">
-        <input type="text" placeholder="Type to search" class="form-control" />
-    </div>
-    <nav role="navigation">
-        <ul class="summary">
             
-            
-            
-            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
 
             
+                <nav role="navigation">
+                
 
-            
+
+<ul class="summary">
     
-        <li class="chapter " data-level="0" data-path="index.html">
-            
-                
-                    <a href="../../../index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                        Introduction
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1" >
-            
-            <span><b>1.</b> Vue</span>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1" data-path="Vue/core/index.html">
-            
-                
-                    <a href="../../../Vue/core/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.</b>
-                        
-                        ★ core
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1.1" data-path="Vue/core/config.html">
-            
-                
-                    <a href="../../../Vue/core/config.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.1.</b>
-                        
-                        ★ config.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.2" data-path="Vue/core/util/index.html">
-            
-                
-                    <a href="../../../Vue/core/util/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.2.</b>
-                        
-                        ★ util
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1.2.1" data-path="Vue/core/util/debug.html">
-            
-                
-                    <a href="../../../Vue/core/util/debug.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.2.1.</b>
-                        
-                        ★ debug.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.2.2" data-path="Vue/core/util/env.html">
-            
-                
-                    <a href="../../../Vue/core/util/env.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.2.2.</b>
-                        
-                        ★ env.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.2.3" data-path="Vue/core/util/lang.html">
-            
-                
-                    <a href="../../../Vue/core/util/lang.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.2.3.</b>
-                        
-                        ★ lang.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.2.4" data-path="Vue/core/util/options.html">
-            
-                
-                    <a href="../../../Vue/core/util/options.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.2.4.</b>
-                        
-                        ☆ options.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.2.5" data-path="Vue/core/util/props.html">
-            
-                
-                    <a href="../../../Vue/core/util/props.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.2.5.</b>
-                        
-                        ★ props.js
-                    </a>
-            
-            
-        </li>
     
 
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.3" data-path="Vue/core/global-api/index.html">
-            
-                
-                    <a href="../../../Vue/core/global-api/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.3.</b>
-                        
-                        ★ global-api
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1.3.1" data-path="Vue/core/global-api/assets.html">
-            
-                
-                    <a href="../../../Vue/core/global-api/assets.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.3.1.</b>
-                        
-                        ★ assets.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.3.2" data-path="Vue/core/global-api/extend.html">
-            
-                
-                    <a href="../../../Vue/core/global-api/extend.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.3.2.</b>
-                        
-                        ★ extend.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.3.3" data-path="Vue/core/global-api/mixin.html">
-            
-                
-                    <a href="../../../Vue/core/global-api/mixin.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.3.3.</b>
-                        
-                        ★ mixin.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.3.4" data-path="Vue/core/global-api/use.html">
-            
-                
-                    <a href="../../../Vue/core/global-api/use.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.3.4.</b>
-                        
-                        ★ use.js
-                    </a>
-            
-            
-        </li>
     
 
-            </ul>
-            
-        </li>
     
-        <li class="chapter " data-level="1.1.4" data-path="Vue/core/instance/index.html">
-            
-                
-                    <a href="../../../Vue/core/instance/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.4.</b>
-                        
-                        ★ instance
-                    </a>
-            
-            
-            <ul class="articles">
-                
+        
+        
     
-        <li class="chapter " data-level="1.1.4.1" data-path="Vue/core/instance/init.html">
+        <li class="chapter " data-level="1.1" data-path="../../../">
             
-                
-                    <a href="../../../Vue/core/instance/init.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.4.1.</b>
-                        
-                        ★ init.js
-                    </a>
+                <a href="../../../">
             
+                    
+                    Introduction
             
-        </li>
-    
-        <li class="chapter " data-level="1.1.4.2" data-path="Vue/core/instance/events.html">
+                </a>
             
-                
-                    <a href="../../../Vue/core/instance/events.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.4.2.</b>
-                        
-                        ★ events.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.4.3" data-path="Vue/core/instance/lifecycle.html">
-            
-                
-                    <a href="../../../Vue/core/instance/lifecycle.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.4.3.</b>
-                        
-                        ★ lifecycle.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.4.4" data-path="Vue/core/instance/proxy.html">
-            
-                
-                    <a href="../../../Vue/core/instance/proxy.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.4.4.</b>
-                        
-                        ☆ proxy.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.4.5" data-path="Vue/core/instance/render.html">
-            
-                
-                    <a href="../../../Vue/core/instance/render.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.4.5.</b>
-                        
-                        ☆ render.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.4.6" data-path="Vue/core/instance/state.html">
-            
-                
-                    <a href="../../../Vue/core/instance/state.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.4.6.</b>
-                        
-                        ☆ state.js
-                    </a>
-            
-            
-        </li>
-    
 
-            </ul>
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.1.5" data-path="Vue/core/observer/index.html">
-            
-                
-                    <a href="../../../Vue/core/observer/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.5.</b>
-                        
-                        ★ observer
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1.5.1" data-path="Vue/core/observer/array.html">
-            
-                
-                    <a href="../../../Vue/core/observer/array.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.5.1.</b>
-                        
-                        ★ array.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.5.2" data-path="Vue/core/observer/dep.html">
-            
-                
-                    <a href="../../../Vue/core/observer/dep.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.5.2.</b>
-                        
-                        ★ dep.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.5.3" data-path="Vue/core/observer/scheduler.html">
-            
-                
-                    <a href="../../../Vue/core/observer/scheduler.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.5.3.</b>
-                        
-                        ☆ scheduler.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.5.4" data-path="Vue/core/observer/watcher.html">
-            
-                
-                    <a href="../../../Vue/core/observer/watcher.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.5.4.</b>
-                        
-                        ☆ watcher.js
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.6" data-path="Vue/core/vdom/index.html">
-            
-                
-                    <a href="../../../Vue/core/vdom/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.6.</b>
-                        
-                        ☆ vdom
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1.6.1" data-path="Vue/core/vdom/create-component.html">
-            
-                
-                    <a href="../../../Vue/core/vdom/create-component.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.6.1.</b>
-                        
-                        ☆ create-component.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.6.2" data-path="Vue/core/vdom/create-element.html">
-            
-                
-                    <a href="../../../Vue/core/vdom/create-element.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.6.2.</b>
-                        
-                        ☆ create-element.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.6.3" data-path="Vue/core/vdom/helpers.html">
-            
-                
-                    <a href="../../../Vue/core/vdom/helpers.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.6.3.</b>
-                        
-                        ☆ helpers.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.6.4" data-path="Vue/core/vdom/patch.html">
-            
-                
-                    <a href="../../../Vue/core/vdom/patch.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.6.4.</b>
-                        
-                        ☆ patch.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.6.5" data-path="Vue/core/vdom/vnode.html">
-            
-                
-                    <a href="../../../Vue/core/vdom/vnode.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.6.5.</b>
-                        
-                        ☆ vnode.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.6.6" data-path="Vue/core/vdom/modules/index.html">
-            
-                
-                    <a href="../../../Vue/core/vdom/modules/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.6.6.</b>
-                        
-                        ☆ modules
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1.6.6.1" data-path="Vue/core/vdom/modules/directives.html">
-            
-                
-                    <a href="../../../Vue/core/vdom/modules/directives.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.6.6.1.</b>
-                        
-                        ☆ directives.js
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.6.6.2" data-path="Vue/core/vdom/modules/ref.html">
-            
-                
-                    <a href="../../../Vue/core/vdom/modules/ref.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.6.6.2.</b>
-                        
-                        ☆ ref.js
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.7" data-path="Vue/core/components/index.html">
-            
-                
-                    <a href="../../../Vue/core/components/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.7.</b>
-                        
-                        ★ components
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1.7.1" data-path="Vue/core/components/keep-alive.html">
-            
-                
-                    <a href="../../../Vue/core/components/keep-alive.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.7.1.</b>
-                        
-                        ☆ keep-alive.js
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
         <li class="chapter " data-level="1.2" >
             
-            <span><b>1.2.</b> compiler</span>
+                <span>
             
+                    
+                    Vue
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    ★ core
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../config.html">
+            
+                <a href="../config.html">
+            
+                    
+                    ★ config.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../util/">
+            
+                <a href="../util/">
+            
+                    
+                    ★ util
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.2.1" data-path="../util/debug.html">
+            
+                <a href="../util/debug.html">
+            
+                    
+                    ★ debug.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2.2" data-path="../util/env.html">
+            
+                <a href="../util/env.html">
+            
+                    
+                    ★ env.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2.3" data-path="../util/lang.html">
+            
+                <a href="../util/lang.html">
+            
+                    
+                    ★ lang.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2.4" data-path="../util/options.html">
+            
+                <a href="../util/options.html">
+            
+                    
+                    ★ options.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2.5" data-path="../util/props.html">
+            
+                <a href="../util/props.html">
+            
+                    
+                    ★ props.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../global-api/">
+            
+                <a href="../global-api/">
+            
+                    
+                    ★ global-api
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.3.1" data-path="../global-api/assets.html">
+            
+                <a href="../global-api/assets.html">
+            
+                    
+                    ★ assets.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.2" data-path="../global-api/extend.html">
+            
+                <a href="../global-api/extend.html">
+            
+                    
+                    ★ extend.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.3" data-path="../global-api/mixin.html">
+            
+                <a href="../global-api/mixin.html">
+            
+                    
+                    ★ mixin.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3.4" data-path="../global-api/use.html">
+            
+                <a href="../global-api/use.html">
+            
+                    
+                    ★ use.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../instance/">
+            
+                <a href="../instance/">
+            
+                    
+                    ★ instance
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.4.1" data-path="../instance/init.html">
+            
+                <a href="../instance/init.html">
+            
+                    
+                    ★ init.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.2" data-path="../instance/events.html">
+            
+                <a href="../instance/events.html">
+            
+                    
+                    ★ events.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.3" data-path="../instance/lifecycle.html">
+            
+                <a href="../instance/lifecycle.html">
+            
+                    
+                    ★ lifecycle.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.4" data-path="../instance/proxy.html">
+            
+                <a href="../instance/proxy.html">
+            
+                    
+                    ★ proxy.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.5" data-path="../instance/render.html">
+            
+                <a href="../instance/render.html">
+            
+                    
+                    ★ render.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4.6" data-path="../instance/state.html">
+            
+                <a href="../instance/state.html">
+            
+                    
+                    ☆ state.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    ★ observer
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.5.1" data-path="array.html">
+            
+                <a href="array.html">
+            
+                    
+                    ★ array.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5.2" data-path="dep.html">
+            
+                <a href="dep.html">
+            
+                    
+                    ★ dep.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5.3" data-path="scheduler.html">
+            
+                <a href="scheduler.html">
+            
+                    
+                    ☆ scheduler.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5.4" data-path="watcher.html">
+            
+                <a href="watcher.html">
+            
+                    
+                    ☆ watcher.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6" data-path="../vdom/">
+            
+                <a href="../vdom/">
+            
+                    
+                    ☆ vdom
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.6.1" data-path="../vdom/create-component.html">
+            
+                <a href="../vdom/create-component.html">
+            
+                    
+                    ☆ create-component.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6.2" data-path="../vdom/create-element.html">
+            
+                <a href="../vdom/create-element.html">
+            
+                    
+                    ☆ create-element.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6.3" data-path="../vdom/helpers.html">
+            
+                <a href="../vdom/helpers.html">
+            
+                    
+                    ☆ helpers.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6.4" data-path="../vdom/patch.html">
+            
+                <a href="../vdom/patch.html">
+            
+                    
+                    ☆ patch.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6.5" data-path="../vdom/vnode.html">
+            
+                <a href="../vdom/vnode.html">
+            
+                    
+                    ☆ vnode.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6.6" data-path="../vdom/modules/">
+            
+                <a href="../vdom/modules/">
+            
+                    
+                    ☆ modules
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.6.6.1" data-path="../vdom/modules/directives.html">
+            
+                <a href="../vdom/modules/directives.html">
+            
+                    
+                    ☆ directives.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6.6.2" data-path="../vdom/modules/ref.html">
+            
+                <a href="../vdom/modules/ref.html">
+            
+                    
+                    ☆ ref.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.7" data-path="../components/">
+            
+                <a href="../components/">
+            
+                    
+                    ★ components
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.7.1" data-path="../components/keep-alive.html">
+            
+                <a href="../components/keep-alive.html">
+            
+                    
+                    ☆ keep-alive.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" >
+            
+                <span>
+            
+                    
+                    compiler
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" >
+            
+                <span>
+            
+                    
+                    entries
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../sfc/">
+            
+                <a href="../../sfc/">
+            
+                    
+                    ★ sfc
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../../sfc/parser.html">
+            
+                <a href="../../sfc/parser.html">
+            
+                    
+                    ★ parser.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../shared/">
+            
+                <a href="../../shared/">
+            
+                    
+                    ★ shared
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1" data-path="../../shared/util.html">
+            
+                <a href="../../shared/util.html">
+            
+                    
+                    ★ util.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" >
+            
+                <span>
+            
+                    
+                    platforms
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.6.1" >
+            
+                <span>
+            
+                    
+                    web
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" >
+            
+                <span>
+            
+                    
+                    server
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
         <li class="chapter " data-level="1.3" >
             
-            <span><b>1.3.</b> entries</span>
+                <span>
             
+                    
+                    Vuex
+            
+                </span>
+            
+
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="Vue/sfc/index.html">
+        <li class="chapter " data-level="1.4" >
             
-                
-                    <a href="../../../Vue/sfc/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.4.</b>
-                        
-                        ★ sfc
-                    </a>
+                <span>
             
+                    
+                    VueRouter
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.4.1" data-path="Vue/sfc/parser.html">
+                </span>
             
-                
-                    <a href="../../../Vue/sfc/parser.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.4.1.</b>
-                        
-                        ★ parser.js
-                    </a>
-            
+
             
         </li>
     
 
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="Vue/shared/index.html">
-            
-                
-                    <a href="../../../Vue/shared/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.5.</b>
-                        
-                        ★ shared
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="Vue/shared/util.html">
-            
-                
-                    <a href="../../../Vue/shared/util.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.5.1.</b>
-                        
-                        ★ util.js
-                    </a>
-            
-            
-        </li>
     
 
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" >
-            
-            <span><b>1.6.</b> platforms</span>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" >
-            
-            <span><b>1.6.1.</b> web</span>
-            
-            
-        </li>
-    
+    <li class="divider"></li>
 
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" >
-            
-            <span><b>1.7.</b> server</span>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2" >
-            
-            <span><b>2.</b> Vuex</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3" >
-            
-            <span><b>3.</b> VueRouter</span>
-            
-            
-        </li>
-    
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
 
 
+                </nav>
             
-            <li class="divider"></li>
-            <li>
-                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-                    Published with GitBook
-                </a>
-            </li>
-            
-        </ul>
-    </nav>
-</div>
+        
+    </div>
 
     <div class="book-body">
-        <div class="body-inner">
-            <div class="book-header" role="navigation">
-    <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
-    
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
+        
+            <div class="body-inner">
+                
+                    
 
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">Serif</button>
-        <button type="button" data-font="1" class="button">Sans</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
+<div class="book-header" role="navigation">
     
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../../" ></a>
+        <a href="../../.." >★ observer</a>
     </h1>
 </div>
 
-            <div class="page-wrapper" tabindex="-1" role="main">
-                <div class="page-inner">
-                
-                
-                    <section class="normal" id="section-">
-                    
-                        <h1 id="vue-core-observer">Vue/core/observer</h1>
-<table>
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="vuecoreobserver">Vue/core/observer</h1><table>
 <thead>
-<tr>
-<th style="text-align:center">name</th>
-<th style="text-align:left">content</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>index.js</code></td>
+<tr><th>name</th>
+<th>content</th>
+</tr></thead><tbody>
+<tr><td style="text-align:center"><code>index.js</code></td>
 <td style="text-align:left">Observer &#x7C7B;</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>dep.js</code></td>
+</tr><tr><td style="text-align:center"><code>dep.js</code></td>
 <td style="text-align:left">Dep &#x7C7B;, &#x76D1;&#x89C6;&#x53D8;&#x52A8;&#x7684;&#x4F9D;&#x8D56;&#x9879;</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>watcher.js</code></td>
+</tr><tr><td style="text-align:center"><code>watcher.js</code></td>
 <td style="text-align:left">Watcher &#x7C7B;</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>scheduler.js</code></td>
+</tr><tr><td style="text-align:center"><code>scheduler.js</code></td>
 <td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>array.js</code></td>
+</tr><tr><td style="text-align:center"><code>array.js</code></td>
 <td style="text-align:left">&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x80FD;&#x901A;&#x77E5;&#x53D8;&#x5316;&#x7684;&#x65B0;&#x7684; Array</td>
-</tr>
-</tbody>
-</table>
-<h1 id="index-js">index.js</h1>
-<h2 id="-object-observerstate">[object] observerState</h2>
-<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F53;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x54CD;&#x5E94;&#x503C;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x5C31;&#x4F1A;&#x88AB;&#x8F6C;&#x5316;&#x6210;&#x53EF;&#x54CD;&#x5E94;&#x7684;&#x3002;&#x4F46;&#x662F;&#x5F53;&#x5411;&#x4E0B;&#x4F20;&#x9012; props &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7531;&#x4E8E;&#x5B83;&#x53EF;&#x80FD;&#x88AB;&#x5D4C;&#x5957;&#x5728;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4E0D;&#x60F3;&#x8F6C;&#x5316;&#x5B83;&#x3002;&#x56E0;&#x4E3A;&#x8F6C;&#x5316;&#x5B83;&#x4F1A;&#x5F71;&#x54CD;&#x6027;&#x80FD;&#x3002;</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> observerState = {
+</tr></tbody></table>
+
+<h1 id="indexjs">index.js</h1><h2 id="object-observerstate">[object] observerState</h2><p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F53;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x54CD;&#x5E94;&#x503C;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x5C31;&#x4F1A;&#x88AB;&#x8F6C;&#x5316;&#x6210;&#x53EF;&#x54CD;&#x5E94;&#x7684;&#x3002;&#x4F46;&#x662F;&#x5F53;&#x5411;&#x4E0B;&#x4F20;&#x9012; props &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7531;&#x4E8E;&#x5B83;&#x53EF;&#x80FD;&#x88AB;&#x5D4C;&#x5957;&#x5728;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4E0D;&#x60F3;&#x8F6C;&#x5316;&#x5B83;&#x3002;&#x56E0;&#x4E3A;&#x8F6C;&#x5316;&#x5B83;&#x4F1A;&#x5F71;&#x54CD;&#x6027;&#x80FD;&#x3002;</p><pre><code class="lang-javascript"><span class="hljs-keyword">const</span> observerState = {
   shouldConvert: <span class="hljs-literal">true</span>,
   isSettingProps: <span class="hljs-literal">false</span>
-}
-</code></pre>
-<h2 id="-class-observer">[class] Observer</h2>
-<p>Observer &#x7C7B;&#x88AB;&#x7ED1;&#x5B9A;&#x5230;&#x6BCF;&#x4E00;&#x4E2A;&#x89C2;&#x6D4B;&#x5BF9;&#x8C61;&#x4E0A;&#xFF0C;&#x53EA;&#x8981;&#x7ED1;&#x5B9A;&#x4E00;&#x6B21;&#xFF0C;&#x5B9E;&#x4F8B;&#x5C31;&#x4F1A;&#x5C06;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x8F6C;&#x5316;&#x4E3A; getter/setter &#x5F62;&#x5F0F;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x6536;&#x96C6;&#x4F9D;&#x8D56;&#xFF0C;&#x5E76;&#x6D3E;&#x53D1;&#x66F4;&#x65B0;&#x4E86;&#x3002;<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames" target="_blank"><code>Object.getOwnPropertyNames</code></a>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7531;&#x6307;&#x5B9A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x81EA;&#x8EAB;&#x5C5E;&#x6027;&#x7684;&#x5C5E;&#x6027;&#x540D;&#xFF08;&#x5305;&#x62EC;&#x4E0D;&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;&#xFF09;&#x7EC4;&#x6210;&#x7684;&#x6570;&#x7EC4;&#x3002;</p>
-<pre><code class="lang-javascript">
+}</code></pre>
+<h2 id="class-observer">[class] Observer</h2><p>Observer &#x7C7B;&#x88AB;&#x7ED1;&#x5B9A;&#x5230;&#x6BCF;&#x4E00;&#x4E2A;&#x89C2;&#x6D4B;&#x5BF9;&#x8C61;&#x4E0A;&#xFF0C;&#x53EA;&#x8981;&#x7ED1;&#x5B9A;&#x4E00;&#x6B21;&#xFF0C;&#x5B9E;&#x4F8B;&#x5C31;&#x4F1A;&#x5C06;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x8F6C;&#x5316;&#x4E3A; getter/setter &#x5F62;&#x5F0F;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x6536;&#x96C6;&#x4F9D;&#x8D56;&#xFF0C;&#x5E76;&#x6D3E;&#x53D1;&#x66F4;&#x65B0;&#x4E86;&#x3002;<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames" target="_blank"><code>Object.getOwnPropertyNames</code></a>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7531;&#x6307;&#x5B9A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x81EA;&#x8EAB;&#x5C5E;&#x6027;&#x7684;&#x5C5E;&#x6027;&#x540D;&#xFF08;&#x5305;&#x62EC;&#x4E0D;&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;&#xFF09;&#x7EC4;&#x6210;&#x7684;&#x6570;&#x7EC4;&#x3002;</p><pre><code class="lang-javascript">
 <span class="hljs-keyword">const</span> arrayKeys = <span class="hljs-built_in">Object</span>.getOwnPropertyNames(arrayMethods)
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Observer</span> </span>{
-  constructor (value: any) {
+  <span class="hljs-keyword">constructor</span> (value: any) {
     <span class="hljs-keyword">this</span>.value = value
     <span class="hljs-keyword">this</span>.dep = <span class="hljs-keyword">new</span> Dep()
-    <span class="hljs-keyword">this</span>.vmCount = <span class="hljs-number">0</span> <span class="hljs-comment">// &#x6709;&#x51E0;&#x5904; vms &#x5C06;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x6839; $data</span>
+    <span class="hljs-keyword">this</span>.vmCount = <span class="hljs-number">0</span> <span class="hljs-comment">// &#x6709;&#x51E0;&#x5904; vm &#x5C06;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x6839; $data</span>
 
     <span class="hljs-comment">// &#x5C06; Observer &#x7684;&#x5B9E;&#x4F8B;&#x8D4B;&#x503C;&#x7ED9;&#x88AB;&#x89C2;&#x6D4B;&#x5BF9;&#x8C61;&#x7684; __ob__ &#x5C5E;&#x6027;</span>
     def(value, <span class="hljs-string">&apos;__ob__&apos;</span>, <span class="hljs-keyword">this</span>)
@@ -1000,11 +918,8 @@
     <span class="hljs-keyword">const</span> key = keys[i]
     def(target, key, src[key])
   }
-}
-</code></pre>
-<h2 id="-fn-definereactive">[fn] defineReactive</h2>
-<p>&#x5728;&#x5BF9;&#x8C61;&#x4E0A;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x54CD;&#x5E94;&#x7684;&#x5C5E;&#x6027;&#xFF0C; &#x51FD;&#x6570; <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" target="_blank"><code>Object.getOwnPropertyDescriptor</code></a> &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x63CF;&#x8FF0;&#x5F53;&#x524D;&#x5C5E;&#x6027;&#xFF08;obj[key]&#xFF09;&#x7279;&#x6027;&#x7684;&#x5BF9;&#x8C61;</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">defineReactive</span> (<span class="hljs-params">
+}</code></pre>
+<h2 id="fn-definereactive">[fn] defineReactive</h2><p>&#x5728;&#x5BF9;&#x8C61;&#x4E0A;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x54CD;&#x5E94;&#x7684;&#x5C5E;&#x6027;&#xFF0C; &#x51FD;&#x6570; <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor" target="_blank"><code>Object.getOwnPropertyDescriptor</code></a> &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x63CF;&#x8FF0;&#x5F53;&#x524D;&#x5C5E;&#x6027;&#xFF08;obj[key]&#xFF09;&#x7279;&#x6027;&#x7684;&#x5BF9;&#x8C61;</p><pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">defineReactive</span> (<span class="hljs-params">
   obj: Object,
   key: string,
   val: any,
@@ -1067,11 +982,8 @@
       dep.notify()
     }
   })
-}
-</code></pre>
-<h2 id="-fn-observe">[fn] observe</h2>
-<p>&#x5C1D;&#x8BD5;&#x4E3A; value &#x521B;&#x5EFA;&#x4E00;&#x4E2A; observer &#x5B9E;&#x4F8B;&#xFF0C;&#x5982;&#x679C;&#x76D1;&#x542C;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x65B0;&#x5B9E;&#x4F8B;&#x3002;&#x5982;&#x679C; value &#x5DF2;&#x7ECF;&#x88AB;&#x89C2;&#x6D4B;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x5DF2;&#x6709;&#x7684; observer &#x5B9E;&#x4F8B;</p>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">observe</span> (<span class="hljs-params">value: any</span>): <span class="hljs-title">Observer</span> | <span class="hljs-title">void</span> </span>{
+}</code></pre>
+<h2 id="fn-observe">[fn] observe</h2><p>&#x5C1D;&#x8BD5;&#x4E3A; value &#x521B;&#x5EFA;&#x4E00;&#x4E2A; observer &#x5B9E;&#x4F8B;&#xFF0C;&#x5982;&#x679C;&#x76D1;&#x542C;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x65B0;&#x5B9E;&#x4F8B;&#x3002;&#x5982;&#x679C; value &#x5DF2;&#x7ECF;&#x88AB;&#x89C2;&#x6D4B;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x5DF2;&#x6709;&#x7684; observer &#x5B9E;&#x4F8B;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">observe</span> (<span class="hljs-params">value: any</span>): <span class="hljs-title">Observer</span> | <span class="hljs-title">void</span> </span>{
   <span class="hljs-keyword">if</span> (!isObject(value)) {
     <span class="hljs-keyword">return</span>
   }
@@ -1089,11 +1001,8 @@
     ob = <span class="hljs-keyword">new</span> Observer(value)
   }
   <span class="hljs-keyword">return</span> ob
-}
-</code></pre>
-<h2 id="-fn-set">[fn] set</h2>
-<p>&#x8BBE;&#x7F6E;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x503C;&#x4E4B;&#x524D;&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x6DFB;&#x52A0;&#x8FD9;&#x4E2A;&#x65B0;&#x5C5E;&#x6027;&#x5E76;&#x89E6;&#x53D1;&#x53D8;&#x5316;&#x901A;&#x77E5;&#x3002;</p>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">set</span> (<span class="hljs-params">obj: Array&lt;any&gt; | Object, key: any, val: any</span>) </span>{
+}</code></pre>
+<h2 id="fn-set">[fn] set</h2><p>&#x8BBE;&#x7F6E;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x503C;&#x4E4B;&#x524D;&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x6DFB;&#x52A0;&#x8FD9;&#x4E2A;&#x65B0;&#x5C5E;&#x6027;&#x5E76;&#x89E6;&#x53D1;&#x53D8;&#x5316;&#x901A;&#x77E5;&#x3002;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">set</span> (<span class="hljs-params">obj: Array&lt;any&gt; | Object, key: any, val: any</span>) </span>{
   <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(obj)) {
     obj.splice(key, <span class="hljs-number">1</span>, val)
     <span class="hljs-keyword">return</span> val
@@ -1105,7 +1014,7 @@
   <span class="hljs-comment">// &#x662F;&#x65B0;&#x5C5E;&#x6027;</span>
   <span class="hljs-keyword">const</span> ob = obj.__ob__
 
-  <span class="hljs-comment">// &#x4E0D;&#x80FD;&#x4E3A; Vue &#x7CFB;&#x7EDF;&#x5BF9;&#x8C61;&#x6216;&#x8005;&#x5176;&#x6839; $data &#x6DFB;&#x52A0;&#x5C5E;&#x6027;</span>
+  <span class="hljs-comment">// &#x907F;&#x514D;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4E3A;&#x5B9E;&#x4F8B;&#x6216;&#x8005;&#x5B83;&#x7684;&#x6839; $data &#x6DFB;&#x52A0;&#x53EF;&#x54CD;&#x5E94;&#x7684;&#x5C5E;&#x6027;</span>
   <span class="hljs-keyword">if</span> (obj._isVue || (ob &amp;&amp; ob.vmCount)) {
     process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span> &amp;&amp; warn(
       <span class="hljs-string">&apos;Avoid adding reactive properties to a Vue instance or its root $data &apos;</span> +
@@ -1123,11 +1032,8 @@
   <span class="hljs-comment">// &#x6D3E;&#x53D1;&#x901A;&#x77E5;</span>
   ob.dep.notify()
   <span class="hljs-keyword">return</span> val
-}
-</code></pre>
-<h2 id="-fn-del">[fn] del</h2>
-<p>&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;</p>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">del</span> (<span class="hljs-params">obj: Object, key: string</span>) </span>{
+}</code></pre>
+<h2 id="fn-del">[fn] del</h2><p>&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;</p><pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">del</span> (<span class="hljs-params">obj: Object, key: string</span>) </span>{
   <span class="hljs-keyword">const</span> ob = obj.__ob__
   <span class="hljs-keyword">if</span> (obj._isVue || (ob &amp;&amp; ob.vmCount)) {
     process.env.NODE_ENV !== <span class="hljs-string">&apos;production&apos;</span> &amp;&amp; warn(
@@ -1148,38 +1054,86 @@
 }
 </code></pre>
 
-                    
-                    </section>
-                
-                
-                </div>
-            </div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
         </div>
-
-        
-        <a href="../../../Vue/core/instance/state.html" class="navigation navigation-prev " aria-label="Previous page: ☆ state.js"><i class="fa fa-angle-left"></i></a>
-        
-        
-        <a href="../../../Vue/core/observer/array.html" class="navigation navigation-next " aria-label="Next page: ★ array.js"><i class="fa fa-angle-right"></i></a>
-        
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
     </div>
 </div>
 
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../instance/state.html" class="navigation navigation-prev " aria-label="Previous page: ☆ state.js">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="array.html" class="navigation navigation-next " aria-label="Next page: ★ array.js">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
         
-<script src="../../../gitbook/app.js"></script>
+    </div>
 
-    
-    <script src="../../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
-    
-
-<script>
-require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
-    gitbook.start(config);
-});
-</script>
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"★ observer","level":"1.2.1.5","depth":3,"next":{"title":"★ array.js","level":"1.2.1.5.1","depth":4,"path":"Vue/core/observer/array.md","ref":"Vue/core/observer/array.md","articles":[]},"previous":{"title":"☆ state.js","level":"1.2.1.4.6","depth":4,"path":"Vue/core/instance/state.md","ref":"Vue/core/instance/state.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Vue/core/observer/index.md","mtime":"2016-09-06T07:49:04.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-06T02:04:25.121Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
 
         
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
     </body>
-    
 </html>
+

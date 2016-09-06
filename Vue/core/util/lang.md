@@ -5,7 +5,7 @@
 检查是否以 $ 和下划线开头
 
 ``` javascript
-isReserved (str: string): boolean {
+function isReserved (str: string): boolean {
   const c = (str + '').charCodeAt(0)
   return c === 0x24 || c === 0x5F
 }

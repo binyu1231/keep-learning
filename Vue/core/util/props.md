@@ -1,9 +1,9 @@
 # Vue/core/util/props.js
 
 
-## ☆ [fn] validateProp
+## [fn] validateProp
 
-验证 props 中的属性的值
+验证 props 中的属性的值，并返回一个经过校验的合理的值。
 
 ``` javascript
 function validateProp (
@@ -52,9 +52,6 @@ function validateProp (
 - [hyphenate](../../shared/util.md#fn-hyphenate)
 - [observe](../observer/index.md#fn-observe)
 - [observerState](../observer/index.md#object-observerstate)
-
-
-
 
 _[fn] getPropDefaultValue_
 
@@ -131,7 +128,7 @@ function assertProp (
     }
   }
   if (!valid) {
-    // 指定了类型 && 不合法 
+    // 指定了类型 && 不合法
     warn(
       'Invalid prop: type check failed for prop "' + name + '".' +
       ' Expected ' + expectedTypes.map(capitalize).join(', ') +

@@ -13,27 +13,20 @@
 
 由于代码比较多，大家可以根据下面的目录结构在其他文章中找到对应的代码。
 
+建议阅读顺序：
+
 ``` diff
-+ compiler/
-+   |- codegen/
-    |   |- events.js
-    |   |- index.js
-+   |- directives/
-    |   |- bind.js
-    |   |- index.js
-+   |- parser/
-    |   |- entity-decoder.js
-    |   |- filter-parser.js
-    |   |- html-parser.js
-    |   |- text-parser.js
-    |   |- index.js
-    |- error-detector.js
-    |- helpers.js
-    |- optimizer.js
-    |- optimizer.js
++ shared/
+    |- util.js                            // 共用的一些工具函数
++ sfc/
+    |- parser.js                          // 解析 .vue 文件
 + core/
-+   |- components/
-    |   |- keep-alive.js                  // 指令 keep-alive 的实现
++   |- util/
+    |   |- debug.js                       // warn formatComponentName 两个调试函数
+    |   |- env.js                         // 检测环境，实现兼容的 nextTick 和 _Set
+    |   |- lang.js                        // 作用于变量的工具函数
+    |   |- options.js                     // 对配置项进行操作
+    |   |- props.js                       // 验证组件的属性
     |   |- index.js                       // 导出
 +   |- global-api/
     |   |- assets.js                      // Vue.component/directive/filter
@@ -55,13 +48,6 @@
     |   |- watcher.js                     // Watcher 类
     |   |- scheduler.js                   
     |   |- index.js                       // Observer 类
-+   |- util/
-    |   |- debug.js                       // warn formatComponentName 两个调试函数
-    |   |- env.js                         // 检测环境，实现兼容的 nextTick 和 _Set
-    |   |- lang.js                        // 作用于变量的工具函数
-    |   |- options.js                     // 对配置项进行操作
-    |   |- props.js                       // 验证组件的属性
-    |   |- index.js                       // 导出
 +   |- vdom/
 +   |   |- modules/
     |   |   |- directives.js
@@ -73,6 +59,27 @@
     |   |- patch.js
     |   |- vnode.js
     |- index.js
++   |- components/
+    |   |- keep-alive.js                  // 指令 keep-alive 的实现
+    |   |- index.js                       // 导出   
++ compiler/
++   |- codegen/
+    |   |- events.js
+    |   |- index.js
++   |- directives/
+    |   |- bind.js
+    |   |- index.js
++   |- parser/
+    |   |- entity-decoder.js
+    |   |- filter-parser.js
+    |   |- html-parser.js
+    |   |- text-parser.js
+    |   |- index.js
+    |- error-detector.js
+    |- helpers.js
+    |- optimizer.js
+    |- optimizer.js
+
 + entries/
     |- web-compiler.js
     |- web-runtime-with-compiler.js
@@ -85,10 +92,6 @@
     |- render.js
     |- run-in-vm.js
     |- write.js
-+ sfc/
-    |- parser.js                          // 解析 .vue 文件
-+ shared/
-    |- util.js                            // 共用的一些工具函数
 + platforms/
 +   |- web/
 +   |   |- compiler/

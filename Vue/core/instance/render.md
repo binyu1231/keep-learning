@@ -1,21 +1,69 @@
 # Vue/core/instance/render.js
 
-## ☆ [fn] initRender
+## [fn] initRender
 
 ``` javascript
 function initRender (vm: Component) {
-  vm.$vnode = null // the placeholder node in parent tree
-  vm._vnode = null // the root of the child tree
+  vm.$vnode = null // 父树的占位节点
+  vm._vnode = null // 子树的根虚拟节点
   vm._staticTrees = null
+  // 🔽🔽🔽
   vm.$slots = resolveSlots(vm.$options._renderChildren)
-  // bind the public createElement fn to this instance
-  // so that we get proper render context inside it.
+  // 将公共的 createElement 函数绑定到实例上
+  // 以便我们能在其中得到是当的渲染上下文环境
   vm.$createElement = bind(createElement, vm)
   if (vm.$options.el) {
     vm.$mount(vm.$options.el)
   }
 }
 ```
+
+- [createElement](../vdom/create-element.md#fn-createelement)
+- [$mount](../entries/web-runtime-with-compiler.md)
+
+### [fn] resolveSlots
+
+解析 slots
+
+``` javascript
+function resolveSlots (
+  renderChildren: ?VNodeChildren
+): { [key: string]: Array<VNode> } {
+  const slots = {}
+  if (!renderChildren) {
+    return slots
+  }
+  // 标准化子节点
+  const children = normalizeChildren(renderChildren) || []
+  const defaultSlot = []
+  let name, child
+  for (let i = 0, l = children.length; i < l; i++) {
+    child = children[i]
+    if (child.data && (name = child.data.slot)) {
+      delete child.data.slot
+      const slot = (slots[name] || (slots[name] = []))
+      // 忽略 template 标签
+      if (child.tag === 'template') {
+        slot.push.apply(slot, child.children)
+      } else {
+        slot.push(child)
+      }
+    } else {
+      defaultSlot.push(child)
+    }
+  }
+  // 忽略单个空格
+  if (defaultSlot.length && !(
+    defaultSlot.length === 1 &&
+    defaultSlot[0].text === ' '
+  )) {
+    slots.default = defaultSlot
+  }
+  return slots
+}
+```
+
+- [normalizeChildren](../vdom/helpers.md#fn-normalizechildren)
 
 ### [fn] renderMixin
 
@@ -25,12 +73,14 @@ function initRender (vm: Component) {
 
 ``` javascript
 Vue.prototype.$nextTick = function (fn: Function) {
-  // util/env.js
   nextTick(fn, this)
 }
 ```
 
+- [nextTick](../util/env.md#fn-nexttick)
+
 ### ☆ Vue.prototype.\_render
+
 
 ``` javascript
 Vue.prototype._render = function (): VNode {
@@ -44,12 +94,12 @@ Vue.prototype._render = function (): VNode {
   if (staticRenderFns && !vm._staticTrees) {
     vm._staticTrees = []
   }
-  // set parent vnode. this allows render functions to have access
-  // to the data on the placeholder node.
+  // 设置父级虚拟节点，允许渲染函数有权访问占位节点上的数据
   vm.$vnode = _parentVnode
-  // render self
+  // 渲染自身
   let vnode
   try {
+    // 配置项中的 render 函数，函数接收一个 vm.$createElement 函数来创建元素
     vnode = render.call(vm._renderProxy, vm.$createElement)
   } catch (e) {
     if (process.env.NODE_ENV !== 'production') {
@@ -65,10 +115,10 @@ Vue.prototype._render = function (): VNode {
         setTimeout(() => { throw e }, 0)
       }
     }
-    // return previous vnode to prevent render error causing blank component
+    // 返回前一个虚拟节点，防止渲染错误导致产生的空白组件
     vnode = vm._vnode
   }
-  // return empty vnode in case the render function errored out
+  // 在渲染函数出错的情况下返回空的虚拟节点
   if (!(vnode instanceof VNode)) {
     if (process.env.NODE_ENV !== 'production' && Array.isArray(vnode)) {
       warn(
@@ -79,35 +129,39 @@ Vue.prototype._render = function (): VNode {
     }
     vnode = emptyVNode()
   }
-  // set parent
+  // 设置父级
   vnode.parent = _parentVnode
   return vnode
 }
 ```
 
+- [关于 rennder 中的 JSX 语法](https://github.com/vuejs/babel-plugin-transform-vue-jsx)
+- [config](../config.md)
+- [emptyVNode](../vdom/vnode.md#fn-emptyvnode)
+
 ### ☆ Vue.prototype.\_h/\_s/\_n/\_m/\_f/\_l/\_b/\_k
 
 ``` javascript
 function renderMixin (Vue: Class<Component>) {
-  // shorthands used in render functions
+  // 渲染函数的简写形式
   Vue.prototype._h = createElement
   // toString for mustaches
   Vue.prototype._s = _toString
-  // number conversion
+  // 转化为数字
   Vue.prototype._n = toNumber
 
-  // render static tree by index
+  // 使用索引渲染静态树
   Vue.prototype._m = function renderStatic (
     index: number,
     isInFor?: boolean
   ): VNode | VNodeChildren {
     let tree = this._staticTrees[index]
-    // if has already-rendered static tree and not inside v-for,
-    // we can reuse the same tree by indentity.
+    // 如果已经存在被渲染过的静态树，并且其中没有 v-for 指令
+    // 我们可以使用相同的身份重用这个树
     if (tree && !isInFor) {
       return tree
     }
-    // otherwise, render a fresh tree.
+    // 否则就渲染一个动态的树
     tree = this._staticTrees[index] = this.$options.staticRenderFns[index].call(this._renderProxy)
     if (Array.isArray(tree)) {
       for (let i = 0; i < tree.length; i++) {
@@ -121,13 +175,15 @@ function renderMixin (Vue: Class<Component>) {
     return tree
   }
 
-  // filter resolution helper
+
   const identity = _ => _
+
+  // filter 的解析函数
   Vue.prototype._f = function resolveFilter (id) {
     return resolveAsset(this.$options, 'filters', id, true) || identity
   }
 
-  // render v-for
+  // 渲染 v-for
   Vue.prototype._l = function renderList (
     val: any,
     render: () => VNode
@@ -154,7 +210,7 @@ function renderMixin (Vue: Class<Component>) {
     return ret
   }
 
-  // apply v-bind object
+  // 处理 v-bind 对象
   Vue.prototype._b = function bindProps (
     vnode: VNodeWithData,
     value: any,
@@ -174,6 +230,7 @@ function renderMixin (Vue: Class<Component>) {
           if (key === 'class' || key === 'style') {
             data[key] = value[key]
           } else {
+            // 判断是 prop 还是标签的属性
             const hash = asProp || config.mustUseProp(key)
               ? data.domProps || (data.domProps = {})
               : data.attrs || (data.attrs = {})
@@ -184,51 +241,13 @@ function renderMixin (Vue: Class<Component>) {
     }
   }
 
-  // expose v-on keyCodes
+  // 暴露 v-on 键盘编码
   Vue.prototype._k = function getKeyCodes (key: string): any {
     return config.keyCodes[key]
   }
 }
 ```
 
-### [fn] resolveSlots
-
-☆
-
-解析 slots
-
-``` javascript
-function resolveSlots (
-  renderChildren: ?VNodeChildren
-): { [key: string]: Array<VNode> } {
-  const slots = {}
-  if (!renderChildren) {
-    return slots
-  }
-  const children = normalizeChildren(renderChildren) || []
-  const defaultSlot = []
-  let name, child
-  for (let i = 0, l = children.length; i < l; i++) {
-    child = children[i]
-    if (child.data && (name = child.data.slot)) {
-      delete child.data.slot
-      const slot = (slots[name] || (slots[name] = []))
-      if (child.tag === 'template') {
-        slot.push.apply(slot, child.children)
-      } else {
-        slot.push(child)
-      }
-    } else {
-      defaultSlot.push(child)
-    }
-  }
-  // ignore single whitespace
-  if (defaultSlot.length && !(
-    defaultSlot.length === 1 &&
-    defaultSlot[0].text === ' '
-  )) {
-    slots.default = defaultSlot
-  }
-  return slots
-}
-```
+- [resolveAsset](../util/options.md#fn-resolveasset)
+- [config](../config.md)
+- [toObject](../../shared/util.md#fn-toobject)

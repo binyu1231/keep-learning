@@ -31,7 +31,7 @@ class Observer {
   constructor (value: any) {
     this.value = value
     this.dep = new Dep()
-    this.vmCount = 0 // 有几处 vms 将这个对象作为根 $data
+    this.vmCount = 0 // 有几处 vm 将这个对象作为根 $data
 
     // 将 Observer 的实例赋值给被观测对象的 __ob__ 属性
     def(value, '__ob__', this)
@@ -193,7 +193,7 @@ function set (obj: Array<any> | Object, key: any, val: any) {
   // 是新属性
   const ob = obj.__ob__
 
-  // 不能为 Vue 系统对象或者其根 $data 添加属性
+  // 避免在运行时为实例或者它的根 $data 添加可响应的属性
   if (obj._isVue || (ob && ob.vmCount)) {
     process.env.NODE_ENV !== 'production' && warn(
       'Avoid adding reactive properties to a Vue instance or its root $data ' +

@@ -1,4 +1,4 @@
-## ☆ Vue/core/instance/proxy.js
+## Vue/core/instance/proxy.js
 
 ### [fn] initProxy
 
@@ -6,6 +6,9 @@
 let hasProxy, proxyHandlers, initProxy
 
 if (process.env.NODE_ENV !== 'production') {
+
+  // 允许使用的全局 API
+
   const allowedGlobals = makeMap(
     'Infinity,undefined,NaN,isFinite,isNaN,' +
     'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' +
@@ -13,6 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
     'require' // for Webpack/Browserify
   )
 
+  // Proxy 兼容性判断
   hasProxy =
     typeof Proxy !== 'undefined' &&
     Proxy.toString().match(/native code/)
@@ -44,3 +48,5 @@ if (process.env.NODE_ENV !== 'production') {
 
 export { initProxy }
 ```
+
+- [Proxy 代理](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)

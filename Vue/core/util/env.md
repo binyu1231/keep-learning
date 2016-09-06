@@ -2,11 +2,6 @@
 
 检测环境，做兼容
 
-## [string] UA
-``` javascript
-const UA = inBrowser && window.navigator.userAgent.toLowerCase()
-```
-
 ## [boolean] hasProto/inBrowser/devtools
 
 ``` javascript
@@ -21,6 +16,11 @@ const inBrowser =
 // 检查 devtools
 const devtools = inBrowser && window.__VUE_DEVTOOLS_GLOBAL_HOOK__
 
+```
+
+## [string] UA
+``` javascript
+const UA = inBrowser && window.navigator.userAgent.toLowerCase()
 ```
 
 ## [fn] nextTick

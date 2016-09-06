@@ -1,6 +1,6 @@
 # Vue/core/util/options.js
 
-配置项会覆盖父选项和子选项的合并策略
+设置配置项的合并策略，并提供合并函数
 
 ## [fn] mergeOptions
 
@@ -45,13 +45,16 @@ function mergeOptions (
     }
   }
   function mergeField (key) {
-    // 选择合并策略
+    // 选择合并策略 defaultStrat 🔽🔽🔽
     const strat = strats[key] || defaultStrat
     options[key] = strat(parent[key], child[key], vm, key)
   }
   return options
 }
 ```
+
+- [Vue](../instance/index.md#vue-vue)
+- [hasOwn](../../shared/util.md#fn-hasown)
 
 _[fn] normalizeComponents_
 
@@ -80,6 +83,12 @@ function normalizeComponents (options: Object) {
   }
 }
 ```
+
+- [config](../config.md)
+- [isBuiltInTag](../../shared/util.md#fn-isbuiltintag)
+- [isPlainObject](../../shared/util.md#fn-isplainobject)
+- [Vue.extend](../global-api/extend.md#fn-initextend)
+
 
 _[fn] normalizeProps_
 
@@ -119,6 +128,8 @@ function normalizeProps (options: Object) {
 ```
 
 - [camelize](../../shared/util.md#fn-camelize)
+- [isPlainObject](../../shared/util.md#fn-isplainobject)
+
 
 _[fn] normalizeDirectives_
 
@@ -138,17 +149,237 @@ function normalizeDirectives (options: Object) {
 }
 ```
 
-## [fn] resolveAsset
+_合并策略_
 
-☆
+配置项的合并策略是由 **函数** 组成的，这些函数决定了父级与子级的配置项合并时生成最终值的策略。
+
+
+_默认合并策略_
+
+子级覆盖父级配置项
 
 ``` javascript
-/**
- * Resolve an asset.
- * This function is used because child instances need access
- * to assets defined in its ancestor chain.
- */
-export function resolveAsset (
+const strats = config.optionMergeStrategies
+
+const defaultStrat = function (parentVal: any, childVal: any): any {
+  return childVal === undefined
+    ? parentVal
+    : childVal
+}
+```
+
+- [config](../config.md)
+
+_el, propsData, name 合并策略_
+
+``` javascript
+if (process.env.NODE_ENV !== 'production') {
+  strats.el = strats.propsData = function (parent, child, vm, key) {
+    if (!vm) {
+      warn(
+        `option "${key}" can only be used during instance ` +
+        'creation with the `new` keyword.'
+      )
+    }
+    return defaultStrat(parent, child) // 🔼🔼🔼
+  }
+
+  strats.name = function (parent, child, vm) {
+    if (vm && child) {
+      warn(
+        'options "name" can only be used as a component definition option, ' +
+        'not during instance creation.'
+      )
+    }
+    return defaultStrat(parent, child) // 🔼🔼🔼
+  }
+}
+```
+
+_data 合并策略_
+
+``` javascript
+strats.data = function (
+  parentVal: any,
+  childVal: any,
+  vm?: Component
+): ?Function {
+  if (!vm) {
+    // 在使用 Vue.extend 合并时, 合并双方都应为函数
+    if (!childVal) {
+      return parentVal
+    }
+    if (typeof childVal !== 'function') {
+      process.env.NODE_ENV !== 'production' && warn(
+        'The "data" option should be a function ' +
+        'that returns a per-instance value in component ' +
+        'definitions.',
+        vm
+      )
+      return parentVal
+    }
+    if (!parentVal) {
+      return childVal
+    }
+    // 当父级与子级的值都存在时，我们返回一个函数。
+    // 这个函数返回传入的两个函数合并后的值。
+    // 这里不必检查父级值是否为函数的原因是：
+    // 如果它不是一个函数的话，就不能通过之前的合并。
+    return function mergedDataFn () {
+      // 将父级的值合并到子级上 🔽🔽🔽
+      return mergeData(
+        childVal.call(this),
+        parentVal.call(this)
+      )
+    }
+  } else if (parentVal || childVal) {
+    return function mergedInstanceDataFn () {
+      // instance merge
+      const instanceData = typeof childVal === 'function'
+        ? childVal.call(vm)
+        : childVal
+      const defaultData = typeof parentVal === 'function'
+        ? parentVal.call(vm)
+        : undefined
+      if (instanceData) {
+        return mergeData(instanceData, defaultData)
+      } else {
+        return defaultData
+      }
+    }
+  }
+}
+
+// 递归合并 data 对象
+function mergeData (to: Object, from: ?Object): Object {
+  let key, toVal, fromVal
+  for (key in from) {
+    toVal = to[key]
+    fromVal = from[key]
+    if (!hasOwn(to, key)) {
+      // 子级没有 key 才合并
+      set(to, key, fromVal)
+    } else if (isObject(toVal) && isObject(fromVal)) {
+      mergeData(toVal, fromVal)
+    }
+  }
+  return to
+}
+
+```
+
+- [set](../observer/index.md#fn-set)
+- [isObject](../../shared/util.md#fn-isobject)
+- [hasOwn](../../shared/util.md#fn-hasown)
+
+_钩子函数合并策略_
+
+钩子函数和参数属性合并为数组
+
+``` javascript
+function mergeHook (
+  parentVal: ?Array<Function>,
+  childVal: ?Function | ?Array<Function>
+): ?Array<Function> {
+  return childVal
+    ? parentVal
+      ? parentVal.concat(childVal) // 有子级和父级值，添加到数组后
+      : Array.isArray(childVal)    
+        ? childVal                 // 有子级值无父级值，子级为数组
+        : [childVal]               // 有子级值无父级值，子级不是数组
+    : parentVal                    // 没有子级值
+}
+
+config._lifecycleHooks.forEach(hook => {
+  strats[hook] = mergeHook
+})
+```
+
+- [config](../config.md)
+
+
+_config._assetTypes 合并策略_
+
+资源。`['component', 'directive', 'filter']`
+
+当实例存在的情况下。我们需要在构造函数，实例和父级的配置项中间做三项合并。
+
+``` javascript
+function mergeAssets (parentVal: ?Object, childVal: ?Object): Object {
+  const res = Object.create(parentVal || null)
+  return childVal
+    ? extend(res, childVal)
+    : res
+}
+
+config._assetTypes.forEach(function (type) {
+  strats[type + 's'] = mergeAssets
+})
+
+```
+
+- [config](../config.md)
+- [extend](../../shared/util.md#fn-extend)
+
+_watch 合并策略_
+
+监视器不能覆盖，因此将它们合并到数组中。
+
+``` javascript
+strats.watch = function (parentVal: ?Object, childVal: ?Object): ?Object {
+  // 无子级
+  if (!childVal) return parentVal
+  // 有子级无父级
+  if (!parentVal) return childVal
+  // 有子级 有父级
+  const ret = {}
+  extend(ret, parentVal)
+  for (const key in childVal) {
+    let parent = ret[key]
+    const child = childVal[key]
+    if (parent && !Array.isArray(parent)) {
+      parent = [parent]
+    }
+    ret[key] = parent
+      ? parent.concat(child)
+      : [child]
+  }
+  return ret
+}
+
+```
+
+- [extend](../../shared/util.md#fn-extend)
+
+_props, methods, computed 合并策略_
+
+``` javascript
+strats.props =
+strats.methods =
+strats.computed = function (parentVal: ?Object, childVal: ?Object): ?Object {
+  // 无自己值
+  if (!childVal) return parentVal
+  // 有子级值，无父级值
+  if (!parentVal) return childVal
+  // 有子级和父级值
+  const ret = Object.create(null)
+  extend(ret, parentVal)
+  extend(ret, childVal)
+  return ret
+}
+
+```
+
+- [extend](../../shared/util.md#fn-extend)
+
+## [fn] resolveAsset
+
+解析一个资源
+
+该函数在子实例需要访问定义在其原型链上的资源时使用。
+
+``` javascript
+function resolveAsset (
   options: Object,
   type: string,
   id: string,
@@ -174,14 +405,5 @@ export function resolveAsset (
 }
 ```
 
-
-- [Vue](../instance/index.md#vue-vue)
-- [config](../config.md)
-- [warn](../util/debug.md#fn-warn)
-- [set](../observer/index.md#fn-set)
-- [extend](../../shared/util.md#fn-extend)
-- [isObject](../../shared/util.md#fn-isobject)
-- [isPlainObject](../../shared/util.md#fn-isplainobject)
-- [hasOwn](../../shared/util.md#fn-hasown)
+- [camelize](../../shared/util.md#fn-camelize)
 - [capitalize](../../shared/util.md#fn-capitalize)
-- [isBuiltInTag](../../shared/util.md#fn-isbuiltintag)

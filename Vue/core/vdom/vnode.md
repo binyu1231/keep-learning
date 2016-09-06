@@ -12,7 +12,7 @@ class VNode {
     elm?: Node,
     ns?: string | void,  // 命名空间
     context?: Component, // 在这个组件的作用于下渲染
-    componentOptions?: VNodeComponentOptions // 虚拟节点是组件的判断标准
+    componentOptions?: VNodeComponentOptions // 虚拟节点是组件的判断依据
   ) {
     this.tag = tag
     this.data = data

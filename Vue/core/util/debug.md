@@ -30,11 +30,18 @@ warn = (msg, vm) => {
   // 在 core/config.js 中配置
   if (hasConsole && (!config.silent)) {
     console.error(`[Vue warn]: ${msg} ` + (
+      // 🔽🔽🔽
       vm ? formatLocation(formatComponentName(vm)) : ''
     ))
   }
 }
-// 未暴露函数
+```
+
+- [config](../config.md)
+
+_[fn] formatLocation_
+
+``` javascript
 const formatLocation = str => {
   if (str === 'anonymous component') {
     str += ` - use the "name" option for better debugging messages.`
@@ -42,5 +49,3 @@ const formatLocation = str => {
   return `(found in ${str})`
 }
 ```
-
-- [config](../config.md)
