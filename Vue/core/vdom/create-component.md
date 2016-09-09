@@ -19,7 +19,7 @@ function createComponent (
 
   if (isObject(Ctor)) {
     // Ctor 是对象，以 Ctor 创建组件
-    // 返回构造函数，进行下方判断
+    // 返回构造函数，用于下方判断
     Ctor = Vue.extend(Ctor)
   }
 
@@ -30,7 +30,7 @@ function createComponent (
     return
   }
 
-  // 异步组件
+  // 异步组件。Ctor.cid 为 0 时是 Vue
   if (!Ctor.cid) {
     if (Ctor.resolved) {
       Ctor = Ctor.resolved
@@ -89,7 +89,7 @@ function createComponent (
 - [$forceUpdate](../instance/lifecycle.md#vueprototypeforceupdate)
 - [warn](../util/debug.md#fn-warn)
 
-_resolveAsyncComponent_
+_[fn] resolveAsyncComponent_
 
 ``` javascript
 function resolveAsyncComponent (

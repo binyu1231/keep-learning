@@ -29,10 +29,11 @@ function initGlobalAPI (Vue: GlobalAPI) {
   }
   // Vue.config.get => config /core/config.js
   Object.defineProperty(Vue, 'config', configDef)
-  Vue.util = util // 暴露 util /core/util
-  Vue.set = set // 设置对象属性函数 /observer/index
-  Vue.delete = del // 删除对象属性函数 /observer/index
-  Vue.nextTick = util.nextTick // 异步执行一组函数 /core/util/env.js
+
+  Vue.util = util              // 暴露 util
+  Vue.set = set                // 设置对象属性函数
+  Vue.delete = del             // 删除对象属性函数
+  Vue.nextTick = util.nextTick // 为下一次 tick 执行的函数数组中添加一个函数
 
   // 创建配置对象，用于存储创建的 'component', 'directive', 'filter' 的 id
   Vue.options = Object.create(null)
@@ -42,13 +43,12 @@ function initGlobalAPI (Vue: GlobalAPI) {
   // 创建 Vue 自带组件
   util.extend(Vue.options.components, builtInComponents)
 
-  initUse(Vue) // 初始化 Vue.use 方法
-  initMixin(Vue) // 初始化 Vue.mixin 方法
-  initExtend(Vue) // 初始化 Vue.extend 方法
-  initAssetRegisters(Vue) // 初始化 Vue.component Vue.directive Vue.filter
+  initUse(Vue)            // Vue.use 方法
+  initMixin(Vue)          // Vue.mixin 方法
+  initExtend(Vue)         // Vue.extend 方法
+  initAssetRegisters(Vue) // Vue.component Vue.directive Vue.filter 方法
 }
 ```
-
 
 - [util](../util/index.md)
 - [util.extend](../../shared/util.md#fn-extend)

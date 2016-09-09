@@ -1,4 +1,8 @@
 * Vue
+  * [★ sfc](Vue/sfc/index.md)
+    - [★ parser.js](Vue/sfc/parser.md)
+  * [★ shared](Vue/shared/index.md)
+    - [★ util.js](Vue/shared/util.md)
   * [★ core](Vue/core/index.md)
     - [★ config.js](Vue/core/config.md)
     - [★ util](Vue/core/util/index.md)
@@ -37,10 +41,6 @@
       * [☆ keep-alive.js](Vue/core/components/keep-alive.md)
   * compiler
   * entries
-  * [★ sfc](Vue/sfc/index.md)
-    - [★ parser.js](Vue/sfc/parser.md)
-  * [★ shared](Vue/shared/index.md)
-    - [★ util.js](Vue/shared/util.md)
   * platforms
     - web
   * server

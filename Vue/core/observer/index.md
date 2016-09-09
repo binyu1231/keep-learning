@@ -22,7 +22,9 @@ const observerState = {
 ```
 
 ## [class] Observer
+
 Observer 类被绑定到每一个观测对象上，只要绑定一次，实例就会将目标对象的属性都转化为 getter/setter 形式，这样就可以收集依赖，并派发更新了。[`Object.getOwnPropertyNames`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames)返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组。
+
 ``` javascript
 
 const arrayKeys = Object.getOwnPropertyNames(arrayMethods)
@@ -153,7 +155,9 @@ export function defineReactive (
 ```
 
 ## [fn] observe
+
 尝试为 value 创建一个 observer 实例，如果监听成功返回这个新实例。如果 value 已经被观测，则返回已有的 observer 实例
+
 ``` javascript
 function observe (value: any): Observer | void {
   if (!isObject(value)) {

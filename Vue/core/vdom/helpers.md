@@ -57,7 +57,7 @@ function normalizeChildren (
 
 - [isPrimitive](../../shared/util.md#fn-isprimitive)
 
-_createTextVNode_
+_[fn] createTextVNode_
 
 创建文本类型的虚拟节点（`VNode`）
 
@@ -71,7 +71,9 @@ function createTextVNode (val) {
 
 - [VNode](./vnode.md)
 
-_applyNS_
+_[fn] applyNS_
+
+分配命名空间
 
 ``` javascript
 function applyNS (vnode, ns) {
@@ -176,7 +178,7 @@ function updateListeners (
 }
 ```
 
-_arrInvoker_
+_[fn] arrInvoker_
 
 ``` javascript
 function arrInvoker (arr: Array<Function>): Function {
@@ -191,7 +193,7 @@ function arrInvoker (arr: Array<Function>): Function {
 
 ```
 
-_fnInvoker_
+_[fn] fnInvoker_
 
 ``` javascript
 
